@@ -1,0 +1,97 @@
+.top-info-section, .bottom-footer-section{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 300px;
+    background-color: black;
+    color: white;
+}
+
+.titulo{
+    font-size: var(--vlg);
+    padding: 30px;
+    text-align: center;
+}
+
+.top-text{
+    max-width: 600px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.bottom-text{
+    max-width: 480px;
+    margin: 0 auto;
+    text-align: justify;
+}
+
+.middle-section{
+    display:flex;
+}
+
+.left-image-section{
+    flex:1;
+}
+
+.right-price-section{
+    flex: 1;
+    justify-content: center;
+    display: flex;
+    align-items: center;
+}
+
+.right-text{
+    text-align: justify;
+    max-width: 450px;
+}
+
+.left-image-section img{
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.input-label{
+    padding: 0px 0px 30px;
+}
+
+/*  metros box */
+.input-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: top;
+    height: 100px;
+}
+
+.input-container label{
+    font-size: .80em;
+}
+
+.input-container input{
+    /* height: 65px; */
+    background-color: var(--text-input-field);
+    padding: 10px;
+    width: 150px; /*65px*/
+    border-radius: 8px;
+    /* border: none; */
+    border-color: transparent;
+    /* margin: 5px; */
+    /* width: 40px; */
+}
+
+.input-container input::placeholder {
+    font: 0.7rem sans-serif;
+    text-align:right;
+}
+
+.metros-result {
+    height: 30px;
+    font-size: 30px;
+    font-weight: bold;
+    text-align: center;
+    padding: 10px;
+}
+
+
+/*  metros box  fin*/
