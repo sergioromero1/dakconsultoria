@@ -26,13 +26,23 @@
         text-align: center;
     }
 
-    .top-text-msj, .bottom-text{
+    .top-text-msj{
         font-size: var( --sm);
         padding: 0 30px 30px;
     }
 
     .bottom-text{
+        font-size: var( --sm);
         text-align: center;
+    }
+
+    .bottom-frame{
+        display: grid;
+        place-items: center;
+    }
+
+    .bottom-footer-section{
+        display: block;
     }
 
     .metros-result{
