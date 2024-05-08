@@ -36,8 +36,7 @@ nav {
     border-radius: 7px;
   }
   
-  .navbar-left ul li a:hover,
-  .navbar-right ul li a:hover {
+  .navbar-left ul li a:hover {
     border: 1px solid var(--dark);
     color: var(--dark)
   }

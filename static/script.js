@@ -16,7 +16,7 @@ const hamburgerMenu = document.querySelector('.mobile-menu')
 hamburger.addEventListener('click', togglehamburgerMenu)
 
 function togglehamburgerMenu(){
-  aside.classList.add('inactive')
+  // aside.classList.add('inactive')
   hamburgerMenu.classList.toggle('inactive')
 }
 

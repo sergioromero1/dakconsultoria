@@ -39,6 +39,7 @@
   
   /* Mobile Menu */
   .mobile-menu {
+    z-index: 1;
     padding: 24px;
     position: absolute;
     background: var(--white);
