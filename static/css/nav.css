@@ -30,10 +30,21 @@ nav {
   .navbar-left ul li a,
   .navbar-right ul li a {
     text-decoration: none;
-    color: var(--very-light-pink);
+    color: var(--dark);
+    /* color: var(--very-light-pink); */
     border: 1px solid var(--white);
     padding: 8px;
+    margin-right: 5px;
     border-radius: 7px;
+  }
+
+  .navbar-left a{
+    text-decoration: none;
+  }
+
+  .navbar-left a img{
+    width: 97px;
+    height: 60px;
   }
   
   .navbar-left ul li a:hover {
