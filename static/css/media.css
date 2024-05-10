@@ -48,7 +48,7 @@
         padding: 0 30px 30px;
     }
 
-    .bottom-text{
+    .bottom-frame-text{
         font-size: var( --sm);
         text-align: center;
     }
@@ -92,4 +92,26 @@
         background-color: white;
         color: black;
     }
+
+    .footer-section{
+        display: none;
+    }
+
+    .footer-container{
+        align-items: center;
+        margin-top: 60px;
+    }
+
+    .company-logo img {
+        margin-right: 0;
+        max-width: 170px;
+        max-height: 90px;
+    }
+    .footer-logo-negro{
+        display: none;
+    }
+    .footer-logo-blanco{
+        display: block;
+    }
+
 }
