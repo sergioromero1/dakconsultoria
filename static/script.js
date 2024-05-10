@@ -16,11 +16,9 @@ const hamburgerMenu = document.querySelector('.mobile-menu')
 hamburger.addEventListener('click', togglehamburgerMenu)
 
 function togglehamburgerMenu(){
-  // aside.classList.add('inactive')
   hamburgerMenu.classList.toggle('inactive')
 }
 
-// cartMenu.addEventListener('click', toogleCartMenu )
 const aside = document.querySelector('.subscription-detail')
 
 function toogleCartMenu(){
@@ -28,12 +26,6 @@ function toogleCartMenu(){
   hamburgerMenu.classList.add('inactive')
   aside.classList.toggle('inactive')
 }
-
-// imgMiddle.addEventListener('click', changeLeftDiv)
-
-// function changeLeftDiv(){
-//   aside.classList.toggle('inactive')
-// }
 
 
 
