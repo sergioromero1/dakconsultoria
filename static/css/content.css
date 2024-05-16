@@ -91,5 +91,30 @@
     padding: 10px;
 }
 
+.clients-section{
+    display: grid;
+    background-color: var(--black);
+    height: 160px;
+    place-items: center;
+}
+
+.logos-container{
+    display: flex;
+    background-color: var(--black);
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    margin: 40px 0px 40px;
+    height: 80px;
+}
+
+.logos-container img {
+    margin: 100px;
+    max-width: 170px; /* Ajusta el ancho máximo del logo según tus necesidades */
+    max-height: 95px;
+}
+
+
+
 
 /*  metros box  fin*/
