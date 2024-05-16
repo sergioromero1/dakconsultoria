@@ -76,7 +76,7 @@ nav {
     font-weight: bold;
     position: absolute;
     top: -6px;
-    right: -3px;
+    right: 6px;
     display: flex;
     justify-content: center;
     align-items: center;
