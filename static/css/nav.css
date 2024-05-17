@@ -67,6 +67,7 @@ nav {
     position: relative;
     cursor: pointer;
   }
+  
   .navbar-right-img div {
     width: 16px;
     height: 16px;
@@ -80,4 +81,22 @@ nav {
     display: flex;
     justify-content: center;
     align-items: center;
+  }
+
+  @media(max-width: 808px){
+    .menu {
+      display: block;
+  }
+  
+    .navbar-left ul {
+        display: none;
+    }
+    
+    .navbar-email {
+        display: none;
+    }
+    
+    .desktop-menu {
+        display: none;
+    }
   }

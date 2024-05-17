@@ -71,3 +71,46 @@
   text-decoration: none;
   color: var(--very-light-pink);
 }
+
+@media(max-width: 808px){
+    .footer-section{
+        display: none;
+    }
+
+    .footer-container{
+        align-items: center;
+        margin-top: 60px;
+    }
+
+    .company-logo img {
+        margin-right: 0;
+        max-width: 170px;
+        max-height: 90px;
+    }
+    .footer-logo-negro{
+        display: none;
+    }
+    .footer-logo-blanco{
+        display: block;
+    }
+
+    .bottom-frame-text{
+        font-size: var( --sm);
+        text-align: center;
+    }
+
+    .bottom-frame{
+        display: grid;
+        place-items: center;
+    }
+
+    .bottom-footer-section{
+        display: block;
+    }
+    
+    .bottom-footer-section{
+        height: 250px;
+        background-color: white;
+        color: black;
+    }
+}
