@@ -14,20 +14,18 @@
     --lg: 18px;
     --vlg: 22px;
   
-  }
-  body {
-    font-family: 'Quicksand', sans-serif;
-    margin: 0;
-  }
+}
+
+body {
+  font-family: 'Quicksand', sans-serif;
+  margin: 0;
+}
 
 p{
   margin: 0;
 }
   
-  .inactive {
-    display: none;
-  }
-
-
-
+.inactive {
+  display: none;
+}
 
