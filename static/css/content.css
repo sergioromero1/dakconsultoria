@@ -59,7 +59,8 @@
     flex-direction: column;
     align-items: center;
     justify-content: top;
-    height: 100px;
+    height: 150px;
+    overflow: hidden;
 }
 
 .input-container label{
@@ -70,7 +71,7 @@
     /* height: 65px; */
     background-color: var(--text-input-field);
     padding: 10px;
-    width: 150px; /*65px*/
+    width: 180px; /*65px*/
     border-radius: 8px;
     /* border: none; */
     border-color: var(--black);
@@ -89,6 +90,10 @@
     font-weight: bold;
     text-align: center;
     padding: 10px;
+}
+
+.input-wrap{
+    padding: 0px 0px 20px;
 }
 
 @media(max-width: 808px){

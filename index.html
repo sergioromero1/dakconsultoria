@@ -16,6 +16,7 @@
     ============================================ -->
     <link rel="stylesheet" href="static/css/styles.css">
     <link rel="stylesheet" href="static/css/clients-section.css">
+    <link rel="stylesheet" href="static/css/contact.css">
     <link rel="stylesheet" href="static/css/nav.css">
     <link rel="stylesheet" href="static/css/menu.css">
     <link rel="stylesheet" href="static/css/footer.css">
@@ -151,11 +152,39 @@
                         Cotiza tu diseño estructural
                     </div>
                     <div class="input-container">
-                        <div class="input-label">
+                        <!-- <div class="input-label">
                             <label for="metros">Ingresa los metros cuadrados de tu proyecto</label>
                         </div>
                         <div class="input-wrap">
                             <input type="text" id="metros" onkeyup="update()" name="metros" placeholder="m2" class="" value="">
+                        </div> -->
+
+                        <div class="step" id="step1">
+                            <div class="input-label">
+                                <label for="input1">Ingresa los metros cuadrados de tu proyecto</label>
+                            </div>
+                            <div class="input-wrap">
+                                <input type="text" id="input1"  placeholder="m2">
+                            </div>
+                            <button class="nextButton">Siguiente</button>
+                        </div>
+                        <div class="step hidden" id="step2">
+                            <div class="input-label">
+                                <label for="input2">Ingresa tu correo:</label>
+                            </div>
+                            <div class="input-wrap">
+                                <input type="text" id="input2"  placeholder="Correo">
+                            </div>
+                            <button class="nextButton">Siguiente</button>
+                        </div>
+                        <div class="step hidden" id="step3">
+                            <div class="input-label">
+                                <label for="input3">Ingresa tu nombre</label>
+                            </div>
+                            <div class="input-wrap">
+                                <input type="text" id="input3"  placeholder="nombre">
+                            </div>
+                            <button id="submitButton">Enviar</button>
                         </div>
                         
                     </div>
@@ -294,6 +323,7 @@
 </body>
 
 <script src="static/calc.js"></script>
+<script src="static/contact.js"></script>
 <script src="static/script.js"></script>
 <script src="static/clientsCarousel.js"></script>
 
