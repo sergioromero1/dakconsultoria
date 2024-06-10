@@ -25,13 +25,57 @@
 
 .projects-container img {
     padding: 0px 40px 0px;
-    max-width: 510px; /* Ajusta el ancho máximo del logo según tus necesidades */
+    max-width: 510px; /* Ajusta el ancho máximo de la imagen del proyecto según tus necesidades */
     max-height: 290px;
 }
 
-@media(max-width: 808px){
 
+
+@media(min-width: 808px){
+
+    .projects-section-box{
+        overflow: hidden;
+        position: relative;
+        width: 100%;
+        max-width: 500px; /* Ajusta según el diseño */
+        margin: 0px auto 0px; /* Centrar el carrusel */
+    }
+
+    .projects-container{
+        display: flex;
+        justify-content: flex-start;
+        transition: transform 0.5s ease;
+        width: 100%;
+    }
+
+    .projects-container img {
+        padding: 0;
+        margin: 25px;
+        border-radius: 20px; /* Añadir bordes redondeados */
+        transition: transform 0.5s ease; /* Transición suave para el carrusel */
+        flex-shrink: 0;
+    }
+
+
+    .carousel-controls {
+        position: absolute;
+        top: 50%;
+        width: 90%;
+        display: flex;
+        justify-content: space-between;
+        transform: translateY(-50%);
+    }
+    
+    .carousel-controls button {
+        background-color: rgba(0,0,0,0.5);
+        color: white;
+        border: none;
+        padding: 10px;
+        cursor: pointer;
+        font-size: 24px;
+    }
 }
+
 
 @media(max-width: 808px){
     .projects-section{
@@ -89,5 +133,9 @@
       
     .projects-carousel-dot.active {
         background-color: #333;
+    }
+
+    .carousel-controls {
+        display: none;
     }
 }

@@ -82,15 +82,49 @@ document.addEventListener('DOMContentLoaded', function () {
       }
       showSlide(slideIndex);
     }
-  
-  });
 
+    const nextButton = document.querySelector('.next');
+    const prevButton = document.querySelector('.prev');
+
+    function nextSlideBig(){
+      if (slideIndex === slidesP.length - 1) {
+        slideIndex = 0; // Vuelve al inicio
+      } else {
+        slideIndex++;
+      }
+      showSlideBig(slideIndex);
+    }
+
+    function prevSlideBig(){
+      if (slideIndex === 0) {
+        slideIndex = slidesP.length - 1; // Vuelve al final
+        } else {
+        slideIndex--;
+      }
+      showSlideBig(slideIndex);
+      console.log(slideIndex);
+    }
+
+    function showSlideBig(index){
+      // const offset = -index * slideContainerP.clientWidth;
+      // slideContainerP.style.transform = `translateX(${offset}px)`;
+      slideContainerP.style.transform = `translateX(-${index * (100 / slidesP.length)}%)`;
+    }
+
+    nextButton.addEventListener('click', nextSlideBig);
+    prevButton.addEventListener('click', prevSlideBig);
+
+  });
+    
   function handleResize() {
     if (window.innerWidth <= 808) {
       const project1 = document.querySelector('#project1');
       const project2 = document.querySelector('#project2');
       project1.src = "static/img/project1.jpeg";
       project2.src = "static/img/project2.jpeg";
+
+      nextButton.style.display = 'none';
+      prevButton.style.display = 'none';
     }
     
     if (window.innerWidth > 808){
@@ -99,9 +133,13 @@ document.addEventListener('DOMContentLoaded', function () {
       project1.src = "static/img/project1.jpeg";
       project2.src = "static/img/project2.jpeg";
 
-      const slideContainer = document.querySelector('.projects-container');
-      slideContainer.style.transform = 'none';
+      nextButton.style.display = 'block';
+      prevButton.style.display = 'block';
+
+      // const slideContainer = document.querySelector('.projects-container');
+      // slideContainer.style.transform = 'none';
     }
   }
 
 window.addEventListener('resize', handleResize);
+// handleResize();
