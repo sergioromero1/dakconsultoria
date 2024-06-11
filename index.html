@@ -166,7 +166,7 @@
                                 <label for="input1">Ingresa los metros cuadrados de tu proyecto</label>
                             </div>
                             <div class="input-wrap">
-                                <input type="text" id="input1"  placeholder="m2">
+                                <input type="text" id="input1"  placeholder="m2" onkeyup="validMeters()">
                             </div>
                             <button class="nextButton">Siguiente</button>
                         </div>
@@ -175,7 +175,7 @@
                                 <label for="input2">Ingresa tu correo:</label>
                             </div>
                             <div class="input-wrap">
-                                <input type="text" id="input2"  placeholder="Correo">
+                                <input type="text" id="input2"  placeholder="example@gmail.com" onkeyup="">
                             </div>
                             <button class="nextButton">Siguiente</button>
                         </div>
@@ -184,7 +184,7 @@
                                 <label for="input3">Ingresa tu nombre</label>
                             </div>
                             <div class="input-wrap">
-                                <input type="text" id="input3"  placeholder="nombre">
+                                <input type="text" id="input3"  placeholder="Nombre" onkeyup="validName()">
                             </div>
                             <button id="submitButton">Enviar</button>
                         </div>
@@ -228,14 +228,14 @@
                     </div>
                 </div>
             </div>
-            <div class="middle-section">
+            <div class="wwd-middle-section">
 
                 <div class="qh-image-section-left">
                     <img src="static/img/planos.png" alt="planos" class="">
                 </div>
         
                 <div class="qh-image-section-right">
-                    <img src="static/img/codigo.jpg" alt="codigo" class="">
+                    <img src="static/img/codigo.png " alt="codigo" class="">
                 </div>
             </div>
         </div>
@@ -386,6 +386,7 @@
 <script src="static/script.js"></script>
 <script src="static/clientsCarousel.js"></script>
 <script src="static/projectsCarousel.js"></script>
+<script src="static/checkform.js"></script>
 
 
 

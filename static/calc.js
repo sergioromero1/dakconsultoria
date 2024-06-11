@@ -2,7 +2,7 @@ function isNumeric(str){
     return /^\d+$/.test(str);
 }
 function update() {
-    m = document.getElementById('metros').value;
+    m = document.getElementById('input1').value;
     if (isNumeric(m)){
         total = 'Contáctanos para cotizar este metraje'
         // numero = parseFloat(m) * 17000
