@@ -23,7 +23,7 @@ document.addEventListener('DOMContentLoaded', function () {
     showSlide(slideIndex);
   
     function showSlide(index) {
-      slideContainerP.style.transform = `translateX(-${index * (85 / slidesP.length)}%)`;
+      slideContainerP.style.transform = `translateX(-${index * (100 / slidesP.length)}%)`;
   
       // Remover la clase 'active' de todos los puntos
       document.querySelectorAll('.projects-carousel-dot').forEach(dot => dot.classList.remove('active'));
