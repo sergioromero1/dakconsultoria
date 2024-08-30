@@ -165,7 +165,7 @@ function validEmailKey(){
 
 function validName(){
     n = document.getElementById('input3').value;
-    const namePattern = /^[A-Za-z\s]+$/;
+    const namePattern = /^[A-Za-zÀ-ÿ\s]+$/;
     if (n === ''){
         m = 'El nombre no puede estar vacío.'
         isValid = false;
@@ -179,7 +179,6 @@ function validName(){
     }
     document.getElementById('output').innerText = m
     document.getElementById('output').style.color = getComputedStyle(document.documentElement).getPropertyValue('--error-light');
-
 
 }
 
