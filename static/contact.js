@@ -46,26 +46,35 @@ document.addEventListener('DOMContentLoaded', function() {
             
             my_other_funct(input1Value, input2Value, input3Value)
 
-            document.getElementById('output').innerText = 'Gracias Pronto te contactaremos'
-            document.getElementById('output').style.color = getComputedStyle(document.documentElement).getPropertyValue('--success-green');
-            
-            document.getElementById('input3').value = '';
+            const inputContainer = document.getElementById('input-container');
+            inputContainer.innerHTML = `
+                <div class="confirmation">
+                    <img src="https://img.icons8.com/ios-filled/50/FFFFFF/checkmark.png" alt="Checkmark">
+                    Gracias, pronto te contactaremos
+                </div>
+            `;
 
-            // Lógica para volver a mostrar el 'step1'
-            const current = steps[currentStep];
-            const firstStep = steps[0]; // Selecciona el primer step (step1)
-
-            // Oculta el paso actual
-            current.classList.add('hidden');
-            current.classList.remove('slide-in');
+            // document.getElementById('output').innerText = 'Gracias Pronto te contactaremos'
+            // document.getElementById('output').style.color = getComputedStyle(document.documentElement).getPropertyValue('--success-green');
             
-            // Muestra el primer step (step1)
-            firstStep.classList.remove('hidden');
-            firstStep.classList.add('slide-in');
-            
-            currentStep = 0; // Reinicia el contador de pasos al primer p
             document.getElementById('input1').value = ''
             document.getElementById('input2').value = ''
+            document.getElementById('input3').value = '';
+
+            // // Lógica para volver a mostrar el 'step1'
+            // const current = steps[currentStep];
+            // const firstStep = steps[0]; // Selecciona el primer step (step1)
+
+            // // Oculta el paso actual
+            // current.classList.add('hidden');
+            // current.classList.remove('slide-in');
+            
+            // // Muestra el primer step (step1)
+            // firstStep.classList.remove('hidden');
+            // firstStep.classList.add('slide-in');
+            
+            // currentStep = 0; // Reinicia el contador de pasos al primer p
+
 
         }
     });

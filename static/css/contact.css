@@ -55,7 +55,40 @@
     background-color: #29cf00dc;
 }
 
+/* .confirmation {
+    background-color: #28a745;
+    color: white;
+    padding: 20px;
+    border-radius: 5px;
+    text-align: center;
+    font-size: 16px;
+    animation: confirmAnimation 0.5s ease-out;
+} */
 
+.confirmation {
+    background-color: #28a745; /* Color verde de éxito */
+    color: white;
+    padding: 20px;
+    border-radius: 5px;
+    text-align: center;
+    font-size: 16px;
+    animation: confirmAnimation 0.5s ease-out;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.confirmation img {
+    width: 50px;
+    height: 50px;
+    margin-bottom: 15px;
+}
+
+@keyframes confirmAnimation {
+    0% { opacity: 0; transform: scale(0.5); }
+    100% { opacity: 1; transform: scale(1); }
+}
 
 @keyframes slideOut {
     0% { transform: translateX(0); opacity: 1; }
