@@ -40,6 +40,7 @@ document.addEventListener('DOMContentLoaded', function() {
         if (submit.parentNode.id === 'step3'){
             validName()
         }
+
         if (isValid === true) {
             //alert('Primer dato: ' + input1Value + '\nSegundo dato: ' + input2Value + 'Tercer dato: ' + input3Value);
             
@@ -73,24 +74,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 //////////////////////////// Validaciones ////////////////////////////////////
-function validMeters(){
-    meters = document.getElementById('input1').value;
-    m = ''
-    if (meters === ''){
-        m = ''
-    }
-    if (!/^\d+$/.test(meters)) {
-        m = 'Ingresa solo numeros'
-        isValid = false;
-    } else{
-        m = ''
-        isValid = true;
-    }
-    document.getElementById('output').innerText = m
-    document.getElementById('output').style.color = getComputedStyle(document.documentElement).getPropertyValue('--error-light');
-
-
-}
 
 function validPhoneNumber() {
     phoneNumber = document.getElementById('input1').value;
@@ -113,9 +96,30 @@ function validPhoneNumber() {
     }
     document.getElementById('output').innerText = m
     document.getElementById('output').style.color = getComputedStyle(document.documentElement).getPropertyValue('--error-light');
-
-
 }
+
+function validMeters(){
+    meters = document.getElementById('input2').value;
+    const metersPattern = /^\d+$/;
+    let m = '';
+
+    // Verifica si el campo está vacío
+    if (meters === ''){
+        m = 'El campo está vacío';
+        isValid = false;
+    }
+    else if (!metersPattern.test(meters)) {
+        m = 'Ingresa solo números'
+        isValid = false;
+    }else{
+        m = ''
+        isValid = true;
+    }
+    document.getElementById('output').innerText = m
+    document.getElementById('output').style.color = getComputedStyle(document.documentElement).getPropertyValue('--error-light');
+}
+
+
 
 function validEmail(){
     email = document.getElementById('input2').value;
@@ -148,17 +152,18 @@ function validEmailKey(){
     document.getElementById('output').innerText = m
     document.getElementById('output').style.color = getComputedStyle(document.documentElement).getPropertyValue('--error-light');
 
-
 }
 
 function validName(){
     n = document.getElementById('input3').value;
+    const namePattern = /^[A-Za-z\s]+$/;
     if (n === ''){
-        m = ''
-    }
-    if (n.trim() === '') {
         m = 'El nombre no puede estar vacío.'
         isValid = false;
+    // if (n.trim() === '') {
+    }else if (!namePattern.test(n)) {
+            m = 'El nombre solo puede tener letras';
+            isValid = false;
     } else{
         m = ''
         isValid = true;
