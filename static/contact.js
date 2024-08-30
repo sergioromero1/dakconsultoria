@@ -9,9 +9,9 @@ document.addEventListener('DOMContentLoaded', function() {
         button.addEventListener('click', function() {
 
             if (button.parentNode.id === 'step1'){
-                validMeters()
+                validPhoneNumber()
             } else if (button.parentNode.id === 'step2'){
-                validEmail()
+                validMeters()
             } else if (button.parentNode.id === 'step3'){
                 validName()
             }
@@ -33,21 +33,43 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     document.getElementById('submitButton').addEventListener('click', function() {
-        // let input1Value = document.getElementById('input1').value;
-        // let input2Value = document.getElementById('input2').value;
-        // let input3Value = document.getElementById('input3').value;
+        let input1Value = document.getElementById('input1').value;
+        let input2Value = document.getElementById('input2').value;
+        let input3Value = document.getElementById('input3').value;
         submit = document.getElementById('submitButton');
         if (submit.parentNode.id === 'step3'){
             validName()
         }
         if (isValid === true) {
-            // alert('Primer dato: ' + input1Value + '\nSegundo dato: ' + input2Value + 'Tercer dato: ' + input3Value);
+            //alert('Primer dato: ' + input1Value + '\nSegundo dato: ' + input2Value + 'Tercer dato: ' + input3Value);
+            
+            my_other_funct(input1Value, input2Value, input3Value)
+
             document.getElementById('output').innerText = 'Gracias Pronto te contactaremos'
-            document.getElementById('output').style.color = 'green';
+            document.getElementById('output').style.color = getComputedStyle(document.documentElement).getPropertyValue('--success-green');
+            
             document.getElementById('input3').value = '';
+
+            // Lógica para volver a mostrar el 'step1'
+            const current = steps[currentStep];
+            const firstStep = steps[0]; // Selecciona el primer step (step1)
+
+            // Oculta el paso actual
+            current.classList.add('hidden');
+            current.classList.remove('slide-in');
+            
+            // Muestra el primer step (step1)
+            firstStep.classList.remove('hidden');
+            firstStep.classList.add('slide-in');
+            
+            currentStep = 0; // Reinicia el contador de pasos al primer p
+            document.getElementById('input1').value = ''
+            document.getElementById('input2').value = ''
+
         }
     });
 });
+
 
 
 //////////////////////////// Validaciones ////////////////////////////////////
@@ -65,6 +87,34 @@ function validMeters(){
         isValid = true;
     }
     document.getElementById('output').innerText = m
+    document.getElementById('output').style.color = getComputedStyle(document.documentElement).getPropertyValue('--error-light');
+
+
+}
+
+function validPhoneNumber() {
+    phoneNumber = document.getElementById('input1').value;
+    const phonePattern = /^[0-9]{10}$/;
+    let m = '';
+
+    // Verifica si el campo está vacío
+    if (phoneNumber === '') {
+        m = 'El campo del teléfono está vacío';
+        isValid = false;
+
+    } 
+    // Verifica que el número tenga exactamente 10 dígitos
+    else if (!phonePattern.test(phoneNumber)) {
+        m = 'El número debe contener exactamente 10 dígitos sin símbolos';
+        isValid = false;
+    }else{
+        m = ''
+        isValid = true;
+    }
+    document.getElementById('output').innerText = m
+    document.getElementById('output').style.color = getComputedStyle(document.documentElement).getPropertyValue('--error-light');
+
+
 }
 
 function validEmail(){
@@ -81,6 +131,9 @@ function validEmail(){
         isValid = true;
     }
     document.getElementById('output').innerText = m
+    document.getElementById('output').style.color = getComputedStyle(document.documentElement).getPropertyValue('--error-light');
+
+
 }
 
 function validEmailKey(){
@@ -93,6 +146,9 @@ function validEmailKey(){
         m = ''
     }
     document.getElementById('output').innerText = m
+    document.getElementById('output').style.color = getComputedStyle(document.documentElement).getPropertyValue('--error-light');
+
+
 }
 
 function validName(){
@@ -108,36 +164,54 @@ function validName(){
         isValid = true;
     }
     document.getElementById('output').innerText = m
+    document.getElementById('output').style.color = getComputedStyle(document.documentElement).getPropertyValue('--error-light');
+
+
 }
 
-//////////////////////////// Telegram  ////////////////////////////////////
+function my_funct(component){
+    const p1 = "72795";
+    const p2 = "19499:";
+    const p3 = "AAHkVt";
+    const p4 = "5T4cCmf";
+    const p5 = "jmaJTd_";
+    const p6 = "MZD4g6";
+    const p7 = "JRImjq";
+    const p8 = "U"+ component;
 
-const botToken = 'YOUR_TELEGRAM_BOT_TOKEN';
-const chatId = 'YOUR_TELEGRAM_CHAT_ID';
 
-/// por modificar
-document.getElementById('myButton').addEventListener('click', function() {
-    const message = '¡El botón fue clickeado!';
-    const url = `https://api.telegram.org/bot${botToken}/sendMessage`;
+    return p1+p2+p3+p4+p5+p6+p7+p8
+}
 
-    const data = {
-        chat_id: chatId,
-        text: message
-    };
+function my_function2(component){
 
-    fetch(url, {
+    my_var = my_funct('V'+ component)
+    const part1 = "https://api.telegram.org/bot"
+    const part2 = `${my_var}`
+    const part3 = "/sendMessage"
+
+    return part1 + part2 + part3
+
+}
+
+function my_other_funct(input1Value, input2Value, input3Value){
+
+    const id = '333685986'
+    const home = my_function2('0')
+
+    const text = `Telefono: ${input1Value}\nMetros: ${input2Value}\nNombre: ${input3Value}`;
+
+    fetch(home, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify(data)
+        body: JSON.stringify({
+            chat_id: id,
+            text: text
+        })
     })
-    .then(response => response.json())
-    .then(result => {
-        console.log('Mensaje enviado:', result);
-    })
-    .catch(error => {
-        console.error('Error al enviar el mensaje:', error);
-    });
-});
-//////////////////////////////////////////////////////////////////////////
+    //.then(response => alert(response.json()));
+
+}
+
