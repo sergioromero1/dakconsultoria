@@ -1,0 +1,153 @@
+:root {
+    --black: #000000;
+    --white: #ffffff;
+    --dark-bg: #121212; /* Fondo oscuro */
+    --dark-text: #e0e0e0; /* Texto claro */
+    --dark-accent: #1f1f1f; /* Acentos oscuros */
+    --dark-border: #333333; /* Bordes oscuros */
+    --dark-hover: #2c2c2c; /* Hover oscuro */
+    --dark-button-bg: #333333; /* Fondo de botones */
+    --dark-button-text: #ffffff; /* Texto de botones */
+    --dark-button-hover: #444444; /* Hover de botones */
+    --dark-link: #bb86fc; /* Color de enlaces */
+    --dark-link-hover: #9a67ea; /* Hover de enlaces */
+}
+
+body {
+    background-color: var(--dark-bg);
+    color: var(--dark-text);
+    transition: background-color 0.3s, color 0.3s;
+}
+
+a {
+    color: var(--dark-link);
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+a:hover {
+    color: var(--dark-link-hover);
+}
+
+button, .nextButton, #submitButton {
+    background-color: var(--dark-button-bg);
+    color: var(--dark-button-text);
+    border: 1px solid var(--dark-border);
+    transition: background-color 0.3s, color 0.3s;
+}
+
+button:hover, .nextButton:hover, #submitButton:hover {
+    background-color: var(--dark-button-hover);
+}
+
+input {
+    background-color: var(--dark-accent);
+    color: var(--dark-text);
+    border: 1px solid var(--dark-border);
+    transition: background-color 0.3s, color 0.3s;
+}
+
+input::placeholder {
+    color: var(--dark-text);
+    opacity: 0.7;
+}
+
+/* Aplicar el modo oscuro a las secciones específicas */
+.top-info-section, .clients-section, .projects-section, .wwd-section, footer {
+    background-color: var(--dark-accent);
+    color: var(--dark-text);
+    border-color: var(--dark-border);
+}
+
+/* Ajustes para el menú móvil y de escritorio */
+.mobile-menu, .desktop-menu {
+    background-color: var(--dark-accent);
+    border-color: var(--dark-border);
+}
+
+.mobile-menu a, .desktop-menu a {
+    color: var(--dark-text);
+}
+
+.mobile-menu a:hover, .desktop-menu a:hover {
+    color: var(--dark-link-hover);
+}
+
+/* Ajustes para el carrito de compras */
+.subscription-detail {
+    background-color: var(--dark-accent);
+    color: var(--dark-text);
+}
+
+.shopping-cart p {
+    color: var(--dark-text);
+}
+
+/* Ajustes para el botón de WhatsApp */
+.container-boton .boton {
+    background-color: var(--dark-button-bg);
+    border: 1px solid var(--dark-border);
+}
+
+.container-boton .boton:hover {
+    background-color: var(--dark-button-hover);
+}
+
+/* Transiciones generales */
+body, a, button, input, .nextButton, #submitButton, .mobile-menu, .desktop-menu, .subscription-detail, .container-boton .boton {
+    transition: all 0.3s ease;
+}
+
+/* Animaciones para las secciones */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.top-info-section, .clients-section, .projects-section, .wwd-section, footer {
+    animation: fadeIn 0.5s ease-in;
+}
+
+/* Animación para el botón de WhatsApp */
+.container-boton .boton {
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); }
+}
+
+@media (max-width: 808px) {
+    .top-info-section {
+        background-color: var(--dark-bg);
+        color: var(--dark-text);
+    }
+
+    .right-text {
+        border: 1px solid var(--dark-border);
+    }
+
+    .clients-section {
+        background-color: var(--dark-bg);
+        color: var(--dark-text);
+    }
+
+    .logos-container img {
+        filter: brightness(0.8); /* Ajustar el brillo de los logos en modo oscuro */
+    }
+
+    .mobile-menu {
+        background-color: var(--dark-accent);
+        color: var(--dark-text);
+    }
+
+    .mobile-menu a {
+        color: var(--dark-text);
+    }
+
+    .mobile-menu a:hover {
+        color: var(--dark-link-hover);
+    }
+}
