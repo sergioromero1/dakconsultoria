@@ -1,6 +1,7 @@
 .wwd-section{
-    background-color: var(--black);
-    color: var(--white);
+    background-color: var(--bg-dark);
+    color: var(--text-light);
+    line-height: 1.6;
 }
 
 .wwd-middle-section{

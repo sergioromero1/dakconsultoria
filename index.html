@@ -14,7 +14,6 @@
 
     <!-- CSS
     ============================================ -->
-    <!-- <link rel="stylesheet" href="static/css/dark-mode.css"> -->
     <link rel="stylesheet" href="static/css/styles.css">
     <link rel="stylesheet" href="static/css/clients-section.css">
     <link rel="stylesheet" href="static/css/whatWeDo.css">
@@ -78,10 +77,10 @@
                 </li>
             </ul>
         </div>
-        <img src="static/icons/icon_menu.svg" alt="" class="menu">
+        <img src="static/icons/icons-menu-white.svg" alt="" class="menu">
         <div class="navbar-left">
             <a href="/">
-                <img src="static/icons/logo_dak.svg" alt="" class="">
+                <img src="static/icons/logo_dak_white.svg" alt="" class="">
             </a>
             <ul>
                 <li>
@@ -128,77 +127,51 @@
     
     <!-- Begin content -->
     <div class="content">
-        <div class="top-info-section">
-            <div class="top-text">
-                <img src="static/img/colorized.png" alt="colorized">
-                <div class="titulo">
-                    ¿QUIENES SOMOS?
+
+        <section class="hero" style="background-image: url('static/img/blueprint-background.jpg');">
+            <div class="container">
+                <div class="hero-content">
+                    <h1 class="hero-title">¿Quienes Somos?</h1>
+                    <p class="hero-text">Dak es una compañia especializada en diseño y consultoría de proyectos de <b>Ingeniería Civil</b>. Desarrollamos soluciones de diseño Estructural, Geotécnia y Pavimentos.</p>
                 </div>
-                <div class="top-text-msj">
-                    <p>
-                        Somos una firma especializada en diseño y consultoría de proyetos de Ingenieria Civil.
-                        Desarrollamos soluciones de diseño Estructural, Geotécnia y Pavimentos.
-                    </p>
+            </div>
+        </section>
+
+        <div class="container">
+            <div class="two-column">
+                <div class="column">
+                    <div class="project-image">
+                        <img src="static/img/casa_metal.jpg" alt="Proyecto de Ingeniería Civil">
+                    </div>
+                </div>
+                <div class="column">
+                    <div class="quote-form">
+                        <h2 class="quote-title">Solicita una cotización</h2>
+                        <div id="form-container">
+                            <div class="form-step" id="step1">
+                                <label for="phone" class="form-label">Ingresa tu teléfono:</label>
+                                <input type="tel" id="input1" class="form-input" placeholder="3005357985">
+                                <button class="form-button nextButton" style="margin-top: var(--spacing-md);">Siguiente</button>
+                            </div>
+                            <div class="form-step hidden" id="step2">
+                                <label for="square-meters" class="form-label">Ingresa los metros cuadrados de tu proyecto:</label>
+                                <input type="text" id="input2" class="form-input" placeholder="m²">
+                                <button class="form-button nextButton" style="margin-top: var(--spacing-md);">Siguiente</button>
+                            </div>
+                            <div class="form-step hidden" id="step3">
+                                <label for="name" class="form-label">Ingresa tu nombre:</label>
+                                <input type="text" id="input3" class="form-input" placeholder="Nombre">
+                                <button class="form-button green-button" id="submitButton" style="margin-top: var(--spacing-md);">Enviar</button>
+                            </div>
+                        </div>
+                        <div class="result-box" id="result-box">
+                            <div id="result-message"></div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-        <div class="middle-section">
 
-            <div class="left-image-section">
-                    <img src="static/img/casa_metal.jpg" alt="casa1" class="">
-            </div>
-    
-            <div class="right-price-section">
-                <div class="right-text">
-                    <div class="titulo">
-                        Solicita una cotización
-                    </div>
-                    <div class="input-container" id="input-container">
-                        <!-- <div class="input-label">
-                            <label for="metros">Ingresa los metros cuadrados de tu proyecto</label>
-                        </div>
-                        <div class="input-wrap">
-                            <input type="text" id="metros" onkeyup="update()" name="metros" placeholder="m2" class="" value="">
-                        </div> -->
-
-                        <div class="step" id="step1">
-                            <div class="input-label">
-                                <label for="input1">Ingresa tu telefono:</label>
-                            </div>
-                            <div class="input-wrap">
-                                <input type="text" id="input1"  placeholder="3005357985" onkeyup="">
-                            </div>
-                            <button class="nextButton">Siguiente</button>
-                        </div>
-                        <div class="step hidden" id="step2">
-                            <div class="input-label">
-                                <label for="input2">Ingresa los metros cuadrados de tu proyecto</label>
-                            </div>
-                            <div class="input-wrap">
-                                <input type="text" id="input2"  placeholder="m2" onkeyup="">
-                            </div>
-                            <button class="nextButton">Siguiente</button>
-                        </div>
-                        <div class="step hidden" id="step3">
-                            <div class="input-label">
-                                <label for="input3">Ingresa tu nombre</label>
-                            </div>
-                            <div class="input-wrap">
-                                <input type="text" id="input3"  placeholder="Nombre" onkeyup="">
-                            </div>
-                            <button id="submitButton">Enviar</button>
-                        </div>
-                        
-                    </div>
-                    <div class="metros-result">
-                        <p id="output"></p>
-                    </div>
-                        
-                </div>
-            
-                
-            </div>
-        </div>
 
     </div>
     <!-- end content -->
@@ -211,64 +184,71 @@
     </div>
     <!-- Final Boton whatsapp -->
 
-    <!-- Inicio seccion Que hacemos-->
-    <section>
-        <div class="wwd-section">
-            <div class="top-info-section">
-                <div class="top-text">
-                    <div class="titulo">
-                        ¿QUE HACEMOS?
-                    </div>
-                    <div class="top-text-msj">
-                        <p>
-                            Creamos tus diseños de ingenieria civil,
-                            utilizando software in House para darte el 
-                            mejor servicio.
-                        </p>
-                    </div>
+    <div class="content">
+        <section class="hero" style="background-image: url('static/img/blueprint-background.jpg');">
+            <div class="container">
+                <div class="hero-content">
+                    <h1 class="hero-title">¿QUÉ HACEMOS?</h1>
+                    <p class="hero-text">Creamos tus diseños de <b>ingeniería civil</b>, utilizando software in House para darte el mejor servicio.</p>
                 </div>
             </div>
-            <div class="wwd-middle-section">
-
-                <div class="qh-image-section-left">
-                    <img src="static/img/planos.png" alt="planos" class="">
+        </section>
+    
+        <div class="container">
+            <div class="two-column">
+                <div class="column">
+                    <div class="service-card">
+                        <div class="service-image">
+                            <img src="static/img/planos.png" alt="Planos de ingeniería civil">
+                        </div>
+                        <div class="service-content">
+                            <h3 class="service-title">Diseños Detallados</h3>
+                            <p class="service-text">Desarrollamos planos y especificaciones técnicas para tus proyectos de construcción.</p>
+                        </div>
+                    </div>
                 </div>
-        
-                <div class="qh-image-section-right">
-                    <img src="static/img/codigo.png " alt="codigo" class="">
+                <div class="column">
+                    <div class="service-card">
+                        <div class="service-image">
+                            <img src="static/img/codigo.png" alt="Software especializado">
+                        </div>
+                        <div class="service-content">
+                            <h3 class="service-title">Software Especializado</h3>
+                            <p class="service-text">Utilizamos herramientas tecnológicas avanzadas para optimizar cada aspecto de tu proyecto.</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-    </section>
+    </div>
 
-    <!-- Inicio seccion Proyectos-->
-    <section>
-        <div class="projects-section">
-            <div class="projects-section-title">
-                <div class="titulo">
-                    NUESTROS PROYECTOS
-                </div>
+
+    <section class="projects-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">NUESTROS PROYECTOS</h2>
+                <div class="title-underline"></div>
             </div>
-            <div class="projects-section-box">
+            
+            <div class="projects-carousel">
                 <div class="projects-container">
-                    <!-- Aquí puedes agregar los logos de tus clientes -->
-                    <img id="project1" class="logo" src="static/img/project1.jpeg" alt="project2">
-                    <!-- <img class="logo-letras-negras inactive logo" src="static/img/iberoamericana_letras_negras.png" alt="Ibero letras negras"> -->
-                    <img id="project2" class="logo" src="static/img/project2.jpeg" alt="project2">
-                    <!-- <img class="logo-letras-negras inactive logo" src="static/img/compensar_letras_negras.png" alt="Compensar letras negras"> -->
-                    <img id="project3" class="logo" src="static/img/project3.jpeg" alt="project3" >
-                    <!-- Añade más logos según sea necesario -->
+                    <img id="project1" class="project-slide" src="static/img/project1.jpeg" alt="Proyecto de ingeniería 1">
+                    <img id="project2" class="project-slide" src="static/img/project2.jpeg" alt="Proyecto de ingeniería 2">
+                    <img id="project3" class="project-slide" src="static/img/project3.jpeg" alt="Proyecto de ingeniería 3">
                 </div>
+                
                 <div class="carousel-controls">
-                    <button class="prev">&#10094;</button>
-                    <button class="next">&#10095;</button>
+                    <button class="prev" aria-label="Proyecto anterior">&#10094;</button>
+                    <button class="next" aria-label="Proyecto siguiente">&#10095;</button>
                 </div>
+                
                 <div class="projects-carousel-dots">
-                        <!-- Agrega más puntos de navegación aquí según el número de imágenes -->
+                    <!-- Los puntos se generan dinámicamente con JavaScript -->
                 </div>
             </div>
         </div>
     </section>
+    
     
 
     <!-- Inicio seccion clientes-->
@@ -318,8 +298,8 @@
             <div class="footer-container">
                 <div class="footer-box">
                     <div class="company-logo">
-                        <img class="footer-logo-negro" src="static/img/logo_dak_consultoria_negro_justo.png" alt="Dak Logo">
-                        <img class="footer-logo-blanco inactive" src="static/img/logo_dak_consultoria_blanco_justo.png" alt="Dak Logo2">
+                        <img class="footer-logo-negro" src="static/img/logo_dak_footer_blanco.png" alt="Dak Logo">
+                        <img class="footer-logo-blanco inactive" src="static/img/logo_dak_footer_blanco.png" alt="Dak Logo2">
                     </div>
                     <div class="footer-section trabaja-con-nosotros">
                         <div class="footer-section-title">

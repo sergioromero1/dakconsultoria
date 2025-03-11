@@ -15,7 +15,7 @@
     animation: slideIn 0.5s forwards;
 }
 
-.nextButton {
+/* .nextButton {
     width: 200px;
     height: 35px;
     background-color: #007bffe3;
@@ -33,9 +33,9 @@
 }
 .nextButton:active {
     background-color: #004085;
-}
+} */
 
-#submitButton {
+/* #submitButton {
     width: 200px;
     height: 35px;
     background-color: #00ff6ac5;
@@ -53,7 +53,7 @@
 }
 #submitButton:active {
     background-color: #29cf00dc;
-}
+} */
 
 /* .confirmation {
     background-color: #28a745;

@@ -3,11 +3,15 @@ nav {
     display: flex;
     justify-content: space-between;
     padding: 0 24px;
-    border-bottom: 1px solid var(--very-light-pink);
+    /* border-bottom: 1px solid var(--very-light-pink); */
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
     position: sticky;
     top: 0;
     background-color: var(--white);
     z-index: 999;
+    box-sizing: content-box;
+    background-color: var(--bg-dark);
+    color: var(--text-light);
   }
   
   .menu{
@@ -34,9 +38,9 @@ nav {
   .navbar-left ul li a,
   .navbar-right ul li a {
     text-decoration: none;
-    color: var(--dark);
+    color: var(--text-light);
     /* color: var(--very-light-pink); */
-    border: 1px solid var(--white);
+    border: 1px solid var(--bg-dark);
     padding: 8px;
     margin-right: 5px;
     border-radius: 7px;
@@ -52,8 +56,8 @@ nav {
   }
   
   .navbar-left ul li a:hover {
-    border: 1px solid var(--dark);
-    color: var(--dark)
+    border: 1px solid var(--text-light);
+    color: var(--text-light)
   }
   
   .navbar-email {
@@ -88,6 +92,8 @@ nav {
   }
 
   @media(max-width: 808px){
+
+
     .menu {
       display: block;
   }

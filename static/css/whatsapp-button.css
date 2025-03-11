@@ -6,9 +6,9 @@
     border-radius: 50%;
     bottom: 20px;
     right: 25px;
-    padding: 10px; /*25px;  */
+    padding: 13px; /*25px;  */
     transition: ease 0.3s;
-    animation: efecto 1.2s infinite;
+    animation: efecto 1.2s infinite;    
   }
   
   .container-boton:hover{

@@ -2,8 +2,9 @@
     display: grid;
     align-items: center;
     height: 400px;
-    background-color: black;
-    color: white;
+    background-color: var(--bg-dark);
+    color: var(--text-light);
+    line-height: 1.6;
 }
 
 .bottom-frame{
@@ -110,7 +111,7 @@
     
     .bottom-footer-section{
         height: 250px;
-        background-color: white;
-        color: black;
+        background-color: var(--bg-dark);
+        color: var(--text-light);
     }
 }

@@ -1,6 +1,7 @@
 .clients-section{
-    background-color: var(--black);
-    color: var(--white);
+    background-color: var(--bg-dark);
+    color: var(--text-light);
+    line-height: 1.6;
 }
 
 .clients-section-title{
@@ -27,12 +28,13 @@
     padding: 0px 40px 0px;
     max-width: 170px; /* Ajusta el ancho máximo del logo según tus necesidades */
     max-height: 95px;
+    box-sizing: content-box;
 }
 
 @media(max-width: 808px){
     .clients-section{
-        background-color: var(--white);
-        color: var(--black);
+        background-color: var(--bg-dark);
+        color: var(--text-light);
     }
 
     .clients-section-title{

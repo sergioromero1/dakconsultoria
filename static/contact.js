@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', function() {
     let currentStep = 0;
-    const steps = document.querySelectorAll('.step');
+    const steps = document.querySelectorAll('.form-step');
     const nextButtons = document.querySelectorAll('.nextButton');
 
     isValid = true;
@@ -21,10 +21,10 @@ document.addEventListener('DOMContentLoaded', function() {
                 const current = steps[currentStep];
                 const next = steps[currentStep + 1];
     
-                current.classList.add('slide-out');
+                // current.classList.add('slide-out');
                 current.classList.add('hidden');
                 next.classList.remove('hidden');
-                next.classList.add('slide-in');
+                // next.classList.add('slide-in');
     
                 currentStep++;
             }
@@ -46,16 +46,19 @@ document.addEventListener('DOMContentLoaded', function() {
             
             my_other_funct(input1Value, input2Value, input3Value)
 
-            const inputContainer = document.getElementById('input-container');
-            inputContainer.innerHTML = `
-                <div class="confirmation">
-                    <img src="https://img.icons8.com/ios-filled/50/FFFFFF/checkmark.png" alt="Checkmark">
-                    Gracias, pronto te contactaremos
-                </div>
-            `;
+            // const inputContainer = document.getElementById('result-box');
+            // inputContainer.innerHTML = `
+            //     <div class="confirmation">
+            //         <img src="https://img.icons8.com/ios-filled/50/FFFFFF/checkmark.png" alt="Checkmark">
+            //     </div>
+            // `;
 
-            // document.getElementById('output').innerText = 'Gracias Pronto te contactaremos'
-            // document.getElementById('output').style.color = getComputedStyle(document.documentElement).getPropertyValue('--success-green');
+            const resultMessage = document.getElementById('result-message');
+            resultMessage.innerHTML = `<p class="success-message">¡Gracias ${input3Value}! Te contactaremos pronto con tu cotización.</p>`;
+            steps[2].classList.add('inactive');
+
+            // document.getElementById('result-message').innerText = 'Gracias Pronto te contactaremos'
+            // document.getElementById('result-message').style.color = getComputedStyle(document.documentElement).getPropertyValue('--success-green');
             
             document.getElementById('input1').value = ''
             document.getElementById('input2').value = ''
@@ -103,8 +106,8 @@ function validPhoneNumber() {
         m = ''
         isValid = true;
     }
-    document.getElementById('output').innerText = m
-    document.getElementById('output').style.color = getComputedStyle(document.documentElement).getPropertyValue('--error-light');
+    document.getElementById('result-message').innerText = m
+    document.getElementById('result-message').style.color = getComputedStyle(document.documentElement).getPropertyValue('--error-light');
 }
 
 function validMeters(){
@@ -124,11 +127,9 @@ function validMeters(){
         m = ''
         isValid = true;
     }
-    document.getElementById('output').innerText = m
-    document.getElementById('output').style.color = getComputedStyle(document.documentElement).getPropertyValue('--error-light');
+    document.getElementById('result-message').innerText = m
+    document.getElementById('result-message').style.color = getComputedStyle(document.documentElement).getPropertyValue('--error-light');
 }
-
-
 
 function validEmail(){
     email = document.getElementById('input2').value;
@@ -143,8 +144,8 @@ function validEmail(){
         m = ''
         isValid = true;
     }
-    document.getElementById('output').innerText = m
-    document.getElementById('output').style.color = getComputedStyle(document.documentElement).getPropertyValue('--error-light');
+    document.getElementById('result-message').innerText = m
+    document.getElementById('result-message').style.color = getComputedStyle(document.documentElement).getPropertyValue('--error-light');
 
 
 }
@@ -158,8 +159,8 @@ function validEmailKey(){
     if (email === ''){
         m = ''
     }
-    document.getElementById('output').innerText = m
-    document.getElementById('output').style.color = getComputedStyle(document.documentElement).getPropertyValue('--error-light');
+    document.getElementById('result-message').innerText = m
+    document.getElementById('result-message').style.color = getComputedStyle(document.documentElement).getPropertyValue('--error-light');
 
 }
 
@@ -177,8 +178,8 @@ function validName(){
         m = ''
         isValid = true;
     }
-    document.getElementById('output').innerText = m
-    document.getElementById('output').style.color = getComputedStyle(document.documentElement).getPropertyValue('--error-light');
+    document.getElementById('result-message').innerText = m
+    document.getElementById('result-message').style.color = getComputedStyle(document.documentElement).getPropertyValue('--error-light');
 
 }
 
