@@ -118,7 +118,7 @@ document.addEventListener('DOMContentLoaded', function () {
     slideContainerP.style.transition = 'transform 0.3s ease-in-out';
 
     // Determinar el umbral basado en el ancho del dispositivo para más consistencia (Safari)
-    const threshold = window.innerWidth * 0.1; // 10% del ancho de la pantalla
+    const threshold = window.innerWidth * 0.; // 10% del ancho de la pantalla
     
     // Cambiar slide basado en la dirección del swipe ( Safari)
     if (diffX > threshold) {
