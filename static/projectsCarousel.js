@@ -74,7 +74,7 @@ document.addEventListener('DOMContentLoaded', function () {
     startX = e.touches[0].clientX;
     isDragging = true;
     // Detener transición mientras arrastra
-    slideContainerP.style.transition = 'none';
+    // slideContainerP.style.transition = 'none';
   });
 
   slideContainerP.addEventListener('touchmove', (e) => {
@@ -82,23 +82,9 @@ document.addEventListener('DOMContentLoaded', function () {
     
     const currentX = e.touches[0].clientX;
     const diffX = startX - currentX;
-    
-    // Aplicar un pequeño desplazamiento durante el arrastre para feedback visual
-    const currentOffset = -slideIndex * slidesP[0].clientWidth;
-    slideContainerP.style.transform = `translateX(${currentOffset - diffX}px)`;
-  });
 
-  slideContainerP.addEventListener('touchend', (e) => {
-    if (!isDragging) return;
-    
-    const currentX = e.changedTouches[0].clientX;
-    const diffX = startX - currentX;
-    
-    // Restaurar transición
-    slideContainerP.style.transition = 'transform 0.3s ease-in-out';
-    
-    // Cambiar slide basado en la dirección del swipe
-    if (diffX > 50) {
+     // Cambiar slide basado en la dirección del swipe
+     if (diffX > 50) {
       nextSlide();
     } else if (diffX < -50) {
       prevSlide();
@@ -106,6 +92,30 @@ document.addEventListener('DOMContentLoaded', function () {
       // Si el swipe no fue suficiente, volver al slide actual
       showSlide(slideIndex);
     }
+    
+    // Aplicar un pequeño desplazamiento durante el arrastre para feedback visual
+    // const currentOffset = -slideIndex * slidesP[0].clientWidth;
+    // slideContainerP.style.transform = `translateX(${currentOffset - diffX}px)`;
+  });
+
+  slideContainerP.addEventListener('touchend', (e) => {
+    // if (!isDragging) return;
+    
+    // const currentX = e.changedTouches[0].clientX;
+    // const diffX = startX - currentX;
+    
+    // // Restaurar transición
+    // slideContainerP.style.transition = 'transform 0.3s ease-in-out';
+    
+    // // Cambiar slide basado en la dirección del swipe
+    // if (diffX > 50) {
+    //   nextSlide();
+    // } else if (diffX < -50) {
+    //   prevSlide();
+    // } else {
+    //   // Si el swipe no fue suficiente, volver al slide actual
+    //   showSlide(slideIndex);
+    // }
     
     isDragging = false;
   });
