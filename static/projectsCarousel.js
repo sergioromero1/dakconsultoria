@@ -8,6 +8,7 @@ document.addEventListener('DOMContentLoaded', function () {
   let slideIndex = 0;
   let startX = 0;
   let isDragging = false;
+  let initialTransform = 0; /* Safari */
 
   // Crear puntos para cada slide
   slidesP.forEach((_, index) => {
@@ -23,11 +24,14 @@ document.addEventListener('DOMContentLoaded', function () {
   // Función para mostrar el slide actual
   function showSlide(index) {
     const isMobile = window.innerWidth <= 768;
-    const slideWidth = slidesP[0].clientWidth;
+    // const slideWidth = slidesP[0].clientWidth;
     
     // Asegurarnos que el índice esté dentro del rango
     if (index < 0) index = 0;
     if (index >= slidesP.length) index = slidesP.length - 1;
+
+    // Obtener el ancho real del slide (compatible con Safari)
+    const slideWidth = slidesP[0].getBoundingClientRect().width;
     
     // Cálculo del desplazamiento
     let offset;
@@ -73,9 +77,20 @@ document.addEventListener('DOMContentLoaded', function () {
   slideContainerP.addEventListener('touchstart', (e) => {
     startX = e.touches[0].clientX;
     isDragging = true;
+
+    // Capturar la transformación actual (Safari)
+    const style = window.getComputedStyle(slideContainerP);
+    const matrix = new DOMMatrix(style.transform);
+    initialTransform = matrix.m41; // Obtener el valor actual de translateX
+
     // Detener transición mientras arrastra
     slideContainerP.style.transition = 'none';
-  });
+
+    // Prevenir comportamiento por defecto en (Safari)
+    if (e.cancelable) {
+      e.preventDefault();
+    }
+  }, { passive: false });
 
   slideContainerP.addEventListener('touchmove', (e) => {
     if (!isDragging) return;
@@ -84,9 +99,14 @@ document.addEventListener('DOMContentLoaded', function () {
     const diffX = startX - currentX;
     
     // Aplicar un pequeño desplazamiento durante el arrastre para feedback visual
-    const currentOffset = -slideIndex * slidesP[0].clientWidth;
-    slideContainerP.style.transform = `translateX(${currentOffset - diffX}px)`;
-  });
+    // const currentOffset = -slideIndex * slidesP[0].clientWidth;
+    slideContainerP.style.transform = `translateX(${initialTransform  - diffX}px)`; // safari
+
+    // Prevenir el scroll de la página en Safari
+    if (e.cancelable) {
+      e.preventDefault();
+    }
+  }, { passive: false });
 
   slideContainerP.addEventListener('touchend', (e) => {
     if (!isDragging) return;
@@ -96,11 +116,14 @@ document.addEventListener('DOMContentLoaded', function () {
     
     // Restaurar transición
     slideContainerP.style.transition = 'transform 0.3s ease-in-out';
+
+    // Determinar el umbral basado en el ancho del dispositivo para más consistencia (Safari)
+    const threshold = window.innerWidth * 0.1; // 10% del ancho de la pantalla
     
-    // Cambiar slide basado en la dirección del swipe
-    if (diffX > 50) {
+    // Cambiar slide basado en la dirección del swipe ( Safari)
+    if (diffX > threshold) {
       nextSlide();
-    } else if (diffX < -50) {
+    } else if (diffX < -threshold) {
       prevSlide();
     } else {
       // Si el swipe no fue suficiente, volver al slide actual
