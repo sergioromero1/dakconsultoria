@@ -44,7 +44,7 @@ document.addEventListener('DOMContentLoaded', function() {
         if (isValid === true) {
             //alert('Primer dato: ' + input1Value + '\nSegundo dato: ' + input2Value + 'Tercer dato: ' + input3Value);
             
-            my_other_funct(input1Value, input2Value, input3Value)
+            my_other_funct_throttled(input1Value, input2Value, input3Value)
 
             // const inputContainer = document.getElementById('result-box');
             // inputContainer.innerHTML = `
@@ -206,6 +206,25 @@ function my_function2(component){
 
     return part1 + part2 + part3
 
+}
+
+let callCount = 0;
+const MCPM = 30;
+
+function my_other_funct_throttled(...args) {
+    if (callCount >= MCPM) {
+        return;
+    }
+
+    callCount++;
+    my_other_funct(...args);
+
+    // Reiniciar el contador después de 1 minuto
+    if (callCount === 1) {
+        setTimeout(() => {
+            callCount = 0;
+        }, 60000);
+    }
 }
 
 function my_other_funct(input1Value, input2Value, input3Value){
