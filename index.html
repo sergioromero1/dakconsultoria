@@ -132,6 +132,7 @@
             <div class="container">
                 <div class="hero-content">
                     <h1 class="hero-title">¿Quienes Somos?</h1>
+                    <div class="title-underline"></div>
                     <p class="hero-text">Dak es una compañia especializada en diseño y consultoría de proyectos de <b>Ingeniería Civil</b>. Desarrollamos soluciones de diseño Estructural, Geotécnia y Pavimentos.</p>
                 </div>
             </div>
@@ -189,6 +190,7 @@
             <div class="container">
                 <div class="hero-content">
                     <h1 class="hero-title">¿QUÉ HACEMOS?</h1>
+                    <div class="title-underline"></div>
                     <p class="hero-text">Creamos tus diseños de <b>ingeniería civil</b>, utilizando software in House para darte el mejor servicio.</p>
                 </div>
             </div>
@@ -222,6 +224,42 @@
         </div>
     </div>
 
+    <!-- Sección de Modelación estructural -->
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">MODELACIÓN ESTRUCTURAL</h2>
+        <div class="title-underline"></div>
+      </div>
+      <div class="modelacion-grid">
+        <div class="modelacion-card" onclick="openModelModal(0)">
+          <img src="static/img/modelos/modelo1.png" alt="Modelo 1">
+          <h3>Sistemas aporticados</h3>
+          <p>Modelación de edificios.</p>
+        </div>
+        <div class="modelacion-card" onclick="openModelModal(1)">
+          <img src="static/img/modelos/modelo2.png" alt="Modelo 2">
+          <h3>Muros de Sótano</h3>
+          <p>Modelación de muros.</p>
+        </div>
+        <div class="modelacion-card" onclick="openModelModal(2)">
+          <img src="static/img/modelos/modelo3.png" alt="Modelo 3">
+          <h3>Muros Estructurales</h3>
+          <p>Modelación de muros.</p>
+        </div>
+        <div class="modelacion-card" onclick="openModelModal(3)">
+          <img src="static/img/modelos/modelo4.png" alt="Modelo 4">
+          <h3>Edificios</h3>
+          <p>Modelación de edificios.</p>
+        </div>
+      </div>
+      <!-- Modal para expandir imagen -->
+      <div id="modelModal" class="model-modal" style="display:none;">
+        <span class="close-modal" onclick="closeModelModal()">&times;</span>
+        <img id="modalImg" src="" alt="Modelo expandido">
+        <div id="modalText"></div>
+      </div>
+    </div>
+    <!-- Fin sección Modelación estructural -->
 
     <section class="projects-section">
         <div class="container">
@@ -375,6 +413,7 @@
 <script src="static/clientsCarousel.js"></script>
 <script src="static/projectsCarousel.js"></script>
 <script src="static/checkform.js"></script>
+<script src="static/modelacion.js"></script>
 
 
 
