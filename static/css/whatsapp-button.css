@@ -6,7 +6,13 @@
     border-radius: 50%;
     bottom: 20px;
     right: 25px;
-    padding: 13px; /*25px;  */
+    padding: 0;
+    width: 66px;
+    height: 66px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
     transition: ease 0.3s;
     animation: efecto 1.2s infinite;    
   }
@@ -16,10 +22,33 @@
     transition: 0.3s;
   }
   
-  .boton{
-    width: 40px; /*80px; */
+  /* Restaurar .boton a su estado original */
+.boton{
+    width: 40px;
     transition: ease 1s;
+}
+
+/* Usar .wsboton para el icono de WhatsApp */
+.wsboton{
+    max-width: 65%;
+    max-height: 65%;
+    display: block;
+    margin: auto;
+    transition: ease 1s;
+}
+
+@media (max-width: 600px) {
+  .container-boton {
+    width: 58px;
+    height: 58px;
+    bottom: 18px;
+    right: 18px;
   }
+  .wsboton {
+    max-width: 60%;
+    max-height: 60%;
+  }
+}
   
   @keyframes efecto{
     0%{
