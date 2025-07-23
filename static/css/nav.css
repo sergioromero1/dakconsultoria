@@ -39,12 +39,12 @@ nav {
   .navbar-right ul li a {
     text-decoration: none;
     color: var(--text-light);
-    /* color: var(--very-light-pink); */
-    border: 1px solid var(--bg-dark);
-    padding: 8px;
-    margin-right: 5px;
-    border-radius: 7px;
-  }
+    border: none;
+    border-bottom: 3px solid transparent;
+    padding: 16px 20px; /* 16px arriba y abajo, 20px a los lados */
+    background: none;
+    transition: border-bottom 0.2s, color 0.2s;
+}
 
   .navbar-left a{
     text-decoration: none;
@@ -56,9 +56,9 @@ nav {
   }
   
   .navbar-left ul li a:hover {
-    border: 1px solid var(--text-light);
-    color: var(--text-light)
-  }
+    border-bottom: 3px solid var(--text-light); /* Línea visible al hacer hover */
+    color: var(--text-light);
+}
   
   .navbar-email {
     color: var(--very-light-pink); 
