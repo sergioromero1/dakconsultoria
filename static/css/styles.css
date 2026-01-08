@@ -65,7 +65,7 @@ body {
     background-size: cover;
     background-position: center;
     padding: var(--spacing-xl) 0;
-    margin-bottom: var(--spacing-xl);
+    margin-bottom: var(--spacing-md);
 }
 
 .hero::before {
