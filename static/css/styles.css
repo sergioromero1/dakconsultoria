@@ -431,6 +431,27 @@ html {
     border-color: var(--accent-color);
 }
 
+/* Mobile specific dots styles */
+.projects-carousel-dots-mobile {
+    display: none;
+    /* Hidden by default (desktop) */
+    justify-content: center;
+    padding-bottom: var(--spacing-md);
+    margin-top: var(--spacing-sm);
+}
+
+@media (max-width: 768px) {
+    .projects-carousel-dots {
+        display: none !important;
+        /* Hide desktop dots on mobile */
+    }
+
+    .projects-carousel-dots-mobile {
+        display: flex;
+        /* Show mobile dots */
+    }
+}
+
 @media (min-width: 768px) {
     .projects-container {
         display: flex;

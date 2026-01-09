@@ -1,7 +1,8 @@
 document.addEventListener('DOMContentLoaded', function () {
   const slideContainerP = document.querySelector('.projects-container');
   const slidesP = document.querySelectorAll('.projects-container img');
-  const dotsContainerP = document.querySelector('.projects-carousel-dots');
+  const dotsContainerDesktop = document.querySelector('.projects-carousel-dots');
+  const dotsContainerMobile = document.querySelector('.projects-carousel-dots-mobile');
   const nextButton = document.querySelector('.next');
   const prevButton = document.querySelector('.prev');
 
@@ -9,16 +10,24 @@ document.addEventListener('DOMContentLoaded', function () {
   let startX = 0;
   let isDragging = false;
 
-  // Crear puntos para cada slide
-  slidesP.forEach((_, index) => {
-    const dot = document.createElement('span');
-    dot.classList.add('projects-carousel-dot');
-    dotsContainerP.appendChild(dot);
+  // Function to create dots in a specific container
+  function createDots(container) {
+    if (!container) return;
+    container.innerHTML = ''; // Clear existing
+    slidesP.forEach((_, index) => {
+      const dot = document.createElement('span');
+      dot.classList.add('projects-carousel-dot');
+      container.appendChild(dot);
 
-    dot.addEventListener('click', () => {
-      goToSlide(index);
+      dot.addEventListener('click', () => {
+        goToSlide(index);
+      });
     });
-  });
+  }
+
+  // Create dots for both containers
+  createDots(dotsContainerDesktop);
+  createDots(dotsContainerMobile);
 
   // Función para mostrar el slide actual
   function showSlide(index) {
