@@ -478,14 +478,12 @@ html {
     }
 
     /* Show mobile wrapper */
+    /* Converted to use proyectos.css logic - Removing conflicts */
     .projects-mobile-wrapper {
-        display: grid !important;
-        place-items: center;
-        overflow: hidden;
-        position: relative;
+        display: block !important;
+        /* Ensure visibility but let children control size */
         width: 100%;
-        max-width: 300px;
-        margin: 10px auto 20px;
+        overflow: hidden;
     }
 
     /* Show mobile carousel on mobile */

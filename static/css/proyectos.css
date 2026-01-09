@@ -1,15 +1,16 @@
+@media(min-width: 808px) {
 
-@media(min-width: 808px){
-
-    .projects-section-box{
+    .projects-section-box {
         overflow: hidden;
         position: relative;
         width: 100%;
-        max-width: 500px; /* Ajusta según el diseño */
-        margin: 0px auto 0px; /* Centrar el carrusel */
+        max-width: 500px;
+        /* Ajusta según el diseño */
+        margin: 0px auto 0px;
+        /* Centrar el carrusel */
     }
 
-    .projects-container{
+    .projects-container {
         display: flex;
         justify-content: flex-start;
         transition: transform 0.5s ease;
@@ -19,8 +20,10 @@
     .projects-container img {
         padding: 0;
         margin: 25px;
-        border-radius: 20px; /* Añadir bordes redondeados */
-        transition: transform 0.5s ease; /* Transición suave para el carrusel */
+        border-radius: 20px;
+        /* Añadir bordes redondeados */
+        transition: transform 0.5s ease;
+        /* Transición suave para el carrusel */
         flex-shrink: 0;
     }
 
@@ -33,9 +36,9 @@
         justify-content: space-between;
         transform: translateY(-50%);
     }
-    
+
     .carousel-controls button {
-        background-color: rgba(0,0,0,0.5);
+        background-color: rgba(0, 0, 0, 0.5);
         color: white;
         border: none;
         padding: 10px;
@@ -45,63 +48,90 @@
 }
 
 
-@media(max-width: 808px){
-    .projects-section{
+@media(max-width: 808px) {
+    .projects-section {
         background-color: var(--bg-dark);
         color: var(--text-light);
     }
 
-    .projects-section-title{
+    .projects-section-title {
         font-size: var(--vlg);
         padding: 40px 0px 20px;
     }
 
+    /* Keep same wrapper logic as clients */
     .projects-section-box {
         overflow: hidden;
         position: relative;
         width: 100%;
-        max-width: 300px; /* Ajusta según el diseño */
-        margin: 10px auto 30px ; /* Centrar el carrusel */
+        max-width: none;
+        padding: 0;
+        /* Remove padding so it aligns with parent .container text */
+        margin: 10px 0 30px;
+        /* Align left/right with container */
     }
-      
-    .projects-container {
-        height: 190px;
-        align-items: center;
+
+    .projects-mobile-wrapper {
+        width: 100%;
+        overflow: hidden;
+    }
+
+    .projects-carousel-mobile {
         display: flex;
+        flex-wrap: nowrap;
+        /* Force single row */
         transition: transform 0.5s ease;
         width: 100%;
+        align-items: center;
+        will-change: transform;
+        /* Performance optimization */
     }
-      
-    .projects-container img {
-        /* min-width: 100%; */
-        padding: 0px 0px 0px;
-        margin: 10px;
-        flex-shrink: 0;
-        height: auto;
-        max-width: 340px; /* Ajusta el ancho máximo del logo según tus necesidades */
-        max-height: 190px;
-        border-radius: 20px;
-    }
-      
-    .projects-carousel-dots {
-        text-align: center;
-        position: absolute;
-        bottom: 10px;
+
+    .projects-carousel-mobile img {
+        flex: 0 0 100%;
+        /* Robust flex sizing */
         width: 100%;
+        max-width: none;
+        height: auto;
+        aspect-ratio: 16/9;
+        object-fit: cover;
+        border-radius: 20px;
+        margin: 0;
+        /* Remove margin to simplify calc, rely on padding if needed, or keeping it 0 tight */
+        box-sizing: border-box;
+        background-color: #2a2a2a;
+        /* Fallback for transparent PNGs - card style */
+        border: 1px solid #444;
+        /* Subtle border */
     }
-      
+
+    .projects-carousel-dots-mobile {
+        text-align: center;
+        margin-top: 15px;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+    }
+
     .projects-carousel-dot {
         display: inline-block;
         width: 10px;
         height: 10px;
         border-radius: 50%;
         background-color: #888;
-        margin: 0 5px;
         cursor: pointer;
     }
-      
+
     .projects-carousel-dot.active {
         background-color: #333;
+        /* Dark active dot */
+    }
+
+    /* Ensure container is visible even if empty */
+    .projects-carousel-mobile:empty {
+        min-height: 100px;
+        background: red;
     }
 
     .carousel-controls {
