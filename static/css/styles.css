@@ -390,11 +390,12 @@ body {
     display: flex;
     justify-content: center;
     margin-top: var(--spacing-md);
-    position: absolute;
-    bottom: var(--spacing-md);
-    left: 0;
-    right: 0;
-    z-index: 10;
+    position: relative;
+    /* Changed from absolute to flow naturally below */
+    padding-bottom: var(--spacing-md);
+    /* Add some breathing room */
+    /* bottom: var(--spacing-md); Removed */
+    /* left: 0; right: 0; z-index: 10; Removed */
 }
 
 .projects-carousel-dot {
@@ -456,6 +457,13 @@ body {
 
     .hero-title {
         font-size: 2rem;
+    }
+
+    .project-slide {
+        min-width: 85%;
+        height: 300px;
+        position: relative;
+        flex-shrink: 0;
     }
 
     .nav-links {

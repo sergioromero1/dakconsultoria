@@ -24,22 +24,25 @@ document.addEventListener('DOMContentLoaded', function () {
   function showSlide(index) {
     const isMobile = window.innerWidth <= 768;
     const slideWidth = slidesP[0].clientWidth;
-    
+    const containerWidth = slideContainerP.clientWidth;
+
     // Asegurarnos que el índice esté dentro del rango
     if (index < 0) index = 0;
     if (index >= slidesP.length) index = slidesP.length - 1;
-    
+
     // Cálculo del desplazamiento
     let offset;
-    
+
     if (isMobile) {
-      // En móvil, ajustamos el desplazamiento considerando márgenes
-      offset = index * slideWidth;
+      // En móvil, centramos el slide activo
+      // Offset = (posición del slide) - (margen para centrarlo)
+      const centerMargin = (containerWidth - slideWidth) / 2;
+      offset = (index * slideWidth) - centerMargin;
     } else {
-      // En desktop, usamos un cálculo más preciso
-      offset = index * slideWidth +20;
+      // En desktop, usamos un cálculo más preciso (o el original si funcionaba bien)
+      offset = index * slideWidth; // Removed the +20 magic number for cleaner logic
     }
-    
+
     // Aplicar transformación con transición suave
     slideContainerP.style.transition = 'transform 0.3s ease-in-out';
     slideContainerP.style.transform = `translateX(-${offset}px)`;
@@ -48,7 +51,7 @@ document.addEventListener('DOMContentLoaded', function () {
     document.querySelectorAll('.projects-carousel-dot').forEach((dot, i) => {
       dot.classList.toggle('active', i === index);
     });
-    
+
     // Actualizar slideIndex
     slideIndex = index;
   }
@@ -79,10 +82,10 @@ document.addEventListener('DOMContentLoaded', function () {
 
   slideContainerP.addEventListener('touchmove', (e) => {
     if (!isDragging) return;
-    
+
     const currentX = e.touches[0].clientX;
     const diffX = startX - currentX;
-    
+
     // Aplicar un pequeño desplazamiento durante el arrastre para feedback visual
     const currentOffset = -slideIndex * slidesP[0].clientWidth;
     slideContainerP.style.transform = `translateX(${currentOffset - diffX}px)`;
@@ -90,13 +93,13 @@ document.addEventListener('DOMContentLoaded', function () {
 
   slideContainerP.addEventListener('touchend', (e) => {
     if (!isDragging) return;
-    
+
     const currentX = e.changedTouches[0].clientX;
     const diffX = startX - currentX;
-    
+
     // Restaurar transición
     slideContainerP.style.transition = 'transform 0.3s ease-in-out';
-    
+
     // Cambiar slide basado en la dirección del swipe
     if (diffX > 50) {
       nextSlide();
@@ -106,7 +109,7 @@ document.addEventListener('DOMContentLoaded', function () {
       // Si el swipe no fue suficiente, volver al slide actual
       showSlide(slideIndex);
     }
-    
+
     isDragging = false;
   });
 
@@ -120,7 +123,7 @@ document.addEventListener('DOMContentLoaded', function () {
   showSlide(0);
 
   // Manejar cambio de tamaño de ventana
-  window.addEventListener('resize', function() {
+  window.addEventListener('resize', function () {
     // Recalcular y mostrar el slide actual cuando cambia el tamaño de la ventana
     showSlide(slideIndex);
     updateButtonsVisibility();
@@ -129,7 +132,7 @@ document.addEventListener('DOMContentLoaded', function () {
   // Función para actualizar la visibilidad de los botones según el tamaño de la ventana
   function updateButtonsVisibility() {
     const isMobile = window.innerWidth <= 768;
-    
+
     if (nextButton && prevButton) {
       nextButton.style.display = isMobile ? 'none' : 'block';
       prevButton.style.display = isMobile ? 'none' : 'block';
@@ -140,14 +143,14 @@ document.addEventListener('DOMContentLoaded', function () {
   function updateImages() {
     const project1 = document.querySelector('#project1');
     const project2 = document.querySelector('#project2');
-    
+
     if (project1 && project2) {
       // Mantener las rutas de las imágenes igual (puedes cambiarlas si tienes versiones diferentes)
       project1.src = "static/img/project1.jpeg";
       project2.src = "static/img/project2.jpeg";
-      
+
       // Asegurar que las imágenes se carguen completamente
-      project1.onload = project2.onload = function() {
+      project1.onload = project2.onload = function () {
         // Recalcular posición después de cargar las imágenes
         showSlide(slideIndex);
       };
