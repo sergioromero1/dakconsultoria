@@ -1,39 +1,69 @@
-/* Navbar (general) */
+/* Main Navbar Container */
 nav {
   display: flex;
   justify-content: space-between;
   padding: 0 24px;
-  /* border-bottom: 1px solid var(--very-light-pink); */
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   position: sticky;
   top: 0;
-  background-color: var(--white);
+  background-color: var(--bg-dark);
+  /* Ensure background is solid */
+  color: var(--text-light);
   z-index: 999;
   box-sizing: content-box;
-  background-color: var(--bg-dark);
-  color: var(--text-light);
+  align-items: center;
+  /* Vertically center everything */
+  height: 60px;
+  /* Explicit height */
 }
 
-.menu {
-  display: none;
-}
-
+/* Navbar Left Section (Logo + Links) */
 .navbar-left {
   display: flex;
+  width: 100%;
+  /* Take full width to allow centering */
+  justify-content: center;
+  /* Center content */
+  align-items: center;
 }
 
-.navbar-left ul,
-.navbar-right ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  display: flex;
-  align-items: center;
-  height: 60px;
+/* Logo positioning */
+.navbar-left>a {
+  position: absolute;
+  left: 24px;
+  /* Align logo to the left absolute */
+  top: 50%;
+  transform: translateY(-50%);
 }
 
 .navbar-left ul {
-  margin-left: 12px;
+  display: flex;
+  margin-left: 0;
+  /* remove left margin */
+  height: 100%;
+  list-style: none;
+  /* Explicitly remove dots */
+  padding: 0;
+  /* Remove default padding */
+}
+
+/* Ensure right navbar also has no dots */
+.navbar-right ul {
+  list-style: none;
+  /* Add this */
+  margin: 0;
+  padding: 0;
+}
+
+.navbar-left ul li,
+.navbar-right ul li {
+  list-style: none;
+  /* Double insurance */
+}
+
+/* Ensure hamburger menu is hidden on desktop */
+.menu {
+  display: none;
 }
 
 .navbar-left ul li a,
@@ -170,6 +200,24 @@ nav {
 @media(max-width: 808px) {
   .menu {
     display: block;
+    position: absolute;
+    /* Force it to the left */
+    left: 24px;
+    z-index: 1001;
+    /* Above nav if needed */
+  }
+
+  /* Keep logo centered on mobile too, but ensure it doesn't overlap */
+  .navbar-left {
+    justify-content: center;
+  }
+
+  .navbar-left>a {
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    /* Perfectly center */
+    top: 50%;
   }
 
   .navbar-left ul {
