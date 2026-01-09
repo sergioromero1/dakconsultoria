@@ -46,28 +46,34 @@
         <div class="mobile-menu inactive">
             <ul>
                 <li>
-                    <a href="/">¿Quienes somos?</a>
+                    <a href="#quienes-somos">¿Quienes somos?</a>
                 </li>
                 <li>
-                    <a href="/">Productos</a>
+                    <a href="#productos">Productos</a>
                 </li>
                 <li>
-                    <a href="/">Que hacemos</a>
+                    <a href="#que-hacemos">Que hacemos</a>
                 </li>
                 <li>
-                    <a href="/">Modelacion Estructural</a>
+                    <a href="#modelacion">Modelacion Estructural</a>
                 </li>
                 <li>
-                    <a href="/">Proyectos</a>
+                    <a href="#proyectos">Proyectos</a>
                 </li>
                 <li>
-                    <a href="/">Clientes</a>
+                    <a href="#clientes">Clientes</a>
                 </li>
                 <li>
-                    <a href="/">Contacto</a>
+                    <a href="#contacto">Contacto</a>
                 </li>
-                <li>
-                    <a href="/">Otros servicios</a>
+                <li class="mobile-dropdown-toggle">
+                    <span>Otros</span>
+                    <ul class="mobile-dropdown">
+                        <li><a href="/">Conceptos técnicos</a></li>
+                        <li><a href="/">Estructuras</a></li>
+                        <li><a href="/">Pavimentos</a></li>
+                        <li><a href="/">Geotécnia</a></li>
+                    </ul>
                 </li>
             </ul>
 
@@ -82,7 +88,7 @@
 
             <ul>
                 <li>
-                    <a href="" class="mobile-email">Contáctanos</a>
+                    <a href="#contacto" class="mobile-email">Contáctanos</a>
                 </li>
                 <li>
                     <a href="https://wa.me/573005357985?text=Quiero%20realizar%20un%20proyecto" class="mobile-sign-out"
@@ -97,40 +103,34 @@
             </a>
             <ul>
                 <li>
-                    <a href="/">¿QUIENES SOMOS?</a>
+                    <a href="#quienes-somos">¿QUIENES SOMOS?</a>
                 </li>
                 <li>
-                    <a href="/">PRODUCTOS</a>
+                    <a href="#productos">PRODUCTOS</a>
                 </li>
                 <li>
-                    <a href="/">QUE HACEMOS</a>
+                    <a href="#que-hacemos">QUE HACEMOS</a>
                 </li>
                 <li>
-                    <a href="/">MODELACION ESTRUCTURAL</a>
+                    <a href="#modelacion">MODELACION ESTRUCTURAL</a>
                 </li>
                 <li>
-                    <a href="/">PROYECTOS</a>
+                    <a href="#proyectos">PROYECTOS</a>
                 </li>
                 <li>
-                    <a href="/">CLIENTES</a>
+                    <a href="#clientes">CLIENTES</a>
                 </li>
                 <li>
-                    <a href="/">CONTACTO</a>
+                    <a href="#contacto">CONTACTO</a>
                 </li>
-                <li>
-                    <a href="/">OTROS SERVICIOS</a>
-                </li>
-                <li>
-                    <a href="/">Conceptos técnicos</a>
-                </li>
-                <li>
-                    <a href="/">Estructuras</a>
-                </li>
-                <li>
-                    <a href="/">Pavimentos</a>
-                </li>
-                <li>
-                    <a href="/">Geotécnia</a>
+                <li class="dropdown-item">
+                    <a href="#">OTROS SERVICIOS</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="/">Conceptos técnicos</a></li>
+                        <li><a href="/">Estructuras</a></li>
+                        <li><a href="/">Pavimentos</a></li>
+                        <li><a href="/">Geotécnia</a></li>
+                    </ul>
                 </li>
             </ul>
         </div>
@@ -165,7 +165,7 @@
     <!-- Begin content -->
     <div class="content">
 
-        <section class="hero" style="background-image: url('static/img/blueprint-background.jpg');">
+        <section id="quienes-somos" class="hero" style="background-image: url('static/img/blueprint-background.jpg');">
             <div class="container">
                 <div class="hero-content">
                     <h1 class="hero-title">¿Quienes Somos?</h1>
@@ -189,7 +189,7 @@
     <!-- end content -->
 
     <!-- Productos section -->
-    <div class="content" style="margin-top: 4rem;">
+    <div id="productos" class="content" style="margin-top: 4rem;">
         <div class="container">
             <div class="section-header">
                 <h2 class="section-title">PRODUCTOS</h2>
@@ -228,7 +228,7 @@
     </div>
     <!-- Final Boton whatsapp -->
 
-    <div class="content">
+    <div id="que-hacemos" class="content">
         <section class="hero" style="background-image: url('static/img/blueprint-background.jpg');">
             <div class="container">
                 <div class="hero-content">
@@ -271,7 +271,7 @@
     </div>
 
     <!-- Sección de Modelación estructural -->
-    <div class="container">
+    <div id="modelacion" class="container">
         <div class="section-header">
             <h2 class="section-title">MODELACIÓN ESTRUCTURAL</h2>
             <div class="title-underline"></div>
@@ -307,7 +307,7 @@
     </div>
     <!-- Fin sección Modelación estructural -->
 
-    <section class="projects-section">
+    <section id="proyectos" class="projects-section">
         <div class="container">
             <div class="section-header">
                 <h2 class="section-title">NUESTROS PROYECTOS</h2>
@@ -339,7 +339,7 @@
 
 
     <!-- Inicio seccion clientes-->
-    <section>
+    <section id="clientes">
         <div class="clients-section">
             <div class="clients-section">
                 <div class="section-header" style="margin-bottom: 3rem; margin-top: 3rem;">
@@ -374,7 +374,7 @@
     <!-- Final seccion clientes -->
 
     <!-- Section Contactanos -->
-    <section id="contact-section" style="padding: 4rem 0; background-color: var(--bg-dark);">
+    <section id="contacto" style="padding: 4rem 0; background-color: var(--bg-dark);">
         <div class="container">
             <div class="section-header">
                 <h2 class="section-title">CONTÁCTANOS</h2>
@@ -501,6 +501,7 @@
 <script src="static/calc.js"></script>
 <script src="static/contact.js"></script>
 <script src="static/script.js"></script>
+<script src="static/nav-dropdown.js"></script>
 <script src="static/clientsCarousel.js"></script>
 <script src="static/projectsCarousel.js"></script>
 <script src="static/checkform.js"></script>

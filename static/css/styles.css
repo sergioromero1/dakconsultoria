@@ -59,6 +59,22 @@ body {
     padding: 0 var(--spacing-md);
 }
 
+/* Scroll Offset for Navigation */
+html {
+    scroll-behavior: smooth;
+}
+
+#quienes-somos,
+#productos,
+#que-hacemos,
+#modelacion,
+#proyectos,
+#clientes,
+#contacto {
+    scroll-margin-top: 100px;
+    /* Adjust based on navbar height (approx 60-80px) + visual buffer */
+}
+
 
 .hero {
     position: relative;
