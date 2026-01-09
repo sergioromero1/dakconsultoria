@@ -440,7 +440,7 @@ html {
     margin-top: var(--spacing-sm);
 }
 
-@media (max-width: 768px) {
+@media (max-width: 808px) {
     .projects-carousel-dots {
         display: none !important;
         /* Hide desktop dots on mobile */
@@ -452,14 +452,19 @@ html {
     }
 }
 
+/* Projects Container - Global Flex Layout */
+.projects-container {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+    touch-action: pan-y;
+    width: 100%;
+    position: relative;
+    /* Height is controlled by media queries */
+}
+
 @media (min-width: 768px) {
     .projects-container {
-        display: flex;
-        transition: transform 0.5s ease-in-out;
-        touch-action: pan-y;
         max-height: 700px;
-        width: 100%;
-        position: relative;
     }
 
     .project-slide {

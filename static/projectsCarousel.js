@@ -31,94 +31,97 @@ document.addEventListener('DOMContentLoaded', function () {
 
   // Función para mostrar el slide actual
   function showSlide(index) {
-    const isMobile = window.innerWidth <= 768;
-    const slideWidth = slidesP[0].clientWidth;
-    const containerWidth = slideContainerP.clientWidth;
+    // Sync breakpoint with clientsCarousel.js
+    const isMobile = window.innerWidth <= 808;
 
     // Asegurarnos que el índice esté dentro del rango
     if (index < 0) index = 0;
     if (index >= slidesP.length) index = slidesP.length - 1;
 
-    // Cálculo del desplazamiento
-    let offset;
-
     if (isMobile) {
-      // En móvil, centramos el slide activo
-      // Offset = (posición del slide) - (margen para centrarlo)
-      const centerMargin = (containerWidth - slideWidth) / 2;
-      offset = (index * slideWidth) - centerMargin;
+      // Logic synced with clientsCarousel.js for mobile
+      const targetSlide = slidesP[index];
+
+      if (targetSlide) {
+        const itemWidth = targetSlide.offsetWidth;
+        const containerWidth = slideContainerP.parentElement.clientWidth;
+        const itemLeft = targetSlide.offsetLeft;
+
+        // Centrar: mover el contenedor para que el centro del item coincida con el centro del viewport
+        let moveX = itemLeft - (containerWidth - itemWidth) / 2;
+
+        slideContainerP.style.transform = `translateX(-${moveX}px)`;
+      }
     } else {
-      // En desktop, usamos un cálculo más preciso (o el original si funcionaba bien)
-      offset = index * slideWidth; // Removed the +20 magic number for cleaner logic
+      // Desktop behavior
+      const slideWidth = slidesP[0].clientWidth;
+      const offset = index * slideWidth;
+      slideContainerP.style.transform = `translateX(-${offset}px)`;
     }
 
-    // Aplicar transformación con transición suave
+    // Aplicar transición suave (re-enabling if disabled by drag)
     slideContainerP.style.transition = 'transform 0.3s ease-in-out';
-    slideContainerP.style.transform = `translateX(-${offset}px)`;
 
-    // Actualizar dots
-    document.querySelectorAll('.projects-carousel-dot').forEach((dot, i) => {
+    // Actualizar dots - SEPARATE LOOP FIX
+    const dotsDesktop = document.querySelectorAll('.projects-carousel-dots .projects-carousel-dot');
+    const dotsMobile = document.querySelectorAll('.projects-carousel-dots-mobile .projects-carousel-dot');
+
+    dotsDesktop.forEach((dot, i) => {
       dot.classList.toggle('active', i === index);
     });
 
-    // Actualizar slideIndex
-    slideIndex = index;
+    dotsMobile.forEach((dot, i) => {
+      dot.classList.toggle('active', i === index);
+    });
   }
 
   // Función para ir a un slide específico
   function goToSlide(index) {
     showSlide(index);
+    slideIndex = index;
   }
 
   // Funciones para navegar entre slides
   function nextSlide() {
-    const newIndex = slideIndex === slidesP.length - 1 ? 0 : slideIndex + 1;
-    showSlide(newIndex);
+    if (slideIndex === slidesP.length - 1) {
+      slideIndex = 0;
+    } else {
+      slideIndex++;
+    }
+    showSlide(slideIndex);
   }
 
   function prevSlide() {
-    const newIndex = slideIndex === 0 ? slidesP.length - 1 : slideIndex - 1;
-    showSlide(newIndex);
+    if (slideIndex === 0) {
+      slideIndex = slidesP.length - 1;
+    } else {
+      slideIndex--;
+    }
+    showSlide(slideIndex);
   }
 
-  // Eventos táctiles
+  // Eventos táctiles (Synced with clientsCarousel.js style - no live drag, just snap)
   slideContainerP.addEventListener('touchstart', (e) => {
     startX = e.touches[0].clientX;
     isDragging = true;
-    // Detener transición mientras arrastra
-    slideContainerP.style.transition = 'none';
   });
 
   slideContainerP.addEventListener('touchmove', (e) => {
-    if (!isDragging) return;
+    if (isDragging) {
+      const currentX = e.touches[0].clientX;
+      const diffX = startX - currentX;
 
-    const currentX = e.touches[0].clientX;
-    const diffX = startX - currentX;
-
-    // Aplicar un pequeño desplazamiento durante el arrastre para feedback visual
-    const currentOffset = -slideIndex * slidesP[0].clientWidth;
-    slideContainerP.style.transform = `translateX(${currentOffset - diffX}px)`;
+      if (diffX > 50) {
+        nextSlide();
+        isDragging = false;
+      } else if (diffX < -50) {
+        prevSlide();
+        isDragging = false;
+      }
+    }
   });
 
-  slideContainerP.addEventListener('touchend', (e) => {
-    if (!isDragging) return;
-
-    const currentX = e.changedTouches[0].clientX;
-    const diffX = startX - currentX;
-
-    // Restaurar transición
-    slideContainerP.style.transition = 'transform 0.3s ease-in-out';
-
-    // Cambiar slide basado en la dirección del swipe
-    if (diffX > 50) {
-      nextSlide();
-    } else if (diffX < -50) {
-      prevSlide();
-    } else {
-      // Si el swipe no fue suficiente, volver al slide actual
-      showSlide(slideIndex);
-    }
-
+  slideContainerP.addEventListener('touchend', () => {
     isDragging = false;
   });
 
