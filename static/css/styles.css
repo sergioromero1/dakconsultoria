@@ -10,7 +10,7 @@
     --border-color: #475569;
     --accent-color: #38bdf8;
     --success-color: #10b981;
-    --success-dark: #059669;    
+    --success-dark: #059669;
     --success-light: #34d399;
     --spacing-sm: 0.5rem;
     --spacing-md: 1rem;
@@ -37,7 +37,7 @@
 
 .inactive {
     display: none;
-  }
+}
 
 * {
     margin: 0;
@@ -138,10 +138,15 @@ body {
 .quote-form {
     background-color: var(--bg-card);
     border-radius: var(--border-radius);
-    padding: var(--spacing-lg);
+    padding: var(--spacing-md);
+    /* Reduced from lg */
     box-shadow: var(--shadow);
     border: 1px solid var(--border-color);
-    min-height: 343px;
+    min-height: auto;
+    /* Remove fixed height */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 .quote-title {
@@ -336,7 +341,8 @@ body {
     width: 100%;
 }
 
-.prev, .next {
+.prev,
+.next {
     background-color: rgba(30, 41, 59, 0.7);
     color: var(--text-light);
     border: none;
@@ -365,12 +371,14 @@ body {
     right: 20px;
 }
 
-.prev:hover, .next:hover {
+.prev:hover,
+.next:hover {
     background-color: var(--primary-color);
 }
 
 /* Ajuste específico para alinear caracteres de flecha */
-.prev::before, .next::before {
+.prev::before,
+.next::before {
     position: relative;
     top: 0;
     /* Pequeña corrección para centrado vertical perfecto */
@@ -418,16 +426,20 @@ body {
 
     .project-slide {
         min-width: 50%;
-        height: 500px; /* Altura fija para mantener consistencia */
+        height: 500px;
+        /* Altura fija para mantener consistencia */
         position: relative;
-        flex-shrink: 0; /* Evita que los slides se compriman */
+        flex-shrink: 0;
+        /* Evita que los slides se compriman */
     }
 
     .project-slide img {
         width: 100%;
         height: 100%;
-        object-fit: cover; /* Cubre todo el espacio disponible */
-        object-position: center; /* Centra la imagen */
+        object-fit: cover;
+        /* Cubre todo el espacio disponible */
+        object-position: center;
+        /* Centra la imagen */
     }
 }
 
@@ -460,98 +472,153 @@ body {
 
 /* Modelación estructural */
 .modelacion-section {
-  margin: 40px 0;
-  padding: 0 16px;
+    margin: 40px 0;
+    padding: 0 16px;
 }
+
 .modelacion-section h2 {
-  font-size: 2rem;
-  margin-bottom: 8px;
-}
-.modelacion-desc {
-  color: #555;
-  margin-bottom: 24px;
-}
-.modelacion-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 24px;
-}
-.modelacion-card {
-  background: #fff;
-  border-radius: 12px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.07);
-  overflow: hidden;
-  cursor: pointer;
-  transition: transform 0.15s, box-shadow 0.15s;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-}
-.modelacion-card:hover {
-  transform: translateY(-4px) scale(1.03);
-  box-shadow: 0 4px 16px rgba(0,0,0,0.12);
-}
-.modelacion-card img {
-  width: 100%;
-  height: 160px;
-  object-fit: cover;
-  border-bottom: 1px solid #eee;
-}
-.modelacion-card h3 {
-  margin: 12px 0 6px 0;
-  font-size: 1.1rem;
-  color: #333;
-}
-.modelacion-card p {
-  color: #666;
-  font-size: 0.97rem;
-  margin-bottom: 12px;
-}
-.model-modal {
-  position: fixed;
-  z-index: 1000;
-  left: 0; top: 0; right: 0; bottom: 0;
-  background: rgba(0,0,0,0.9);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-}
-.model-modal img {
-  max-width: 90vw;
-  max-height: 60vh;
-  border-radius: 10px;
-  margin-bottom: 18px;
-  background: #fff;
-}
-.model-modal #modalText {
-  color: #fff;
-  font-size: 1.1rem;
-  text-align: center;
-  max-width: 90vw;
-}
-.close-modal {
-  position: absolute;
-  top: 32px;
-  right: 48px;
-  font-size: 2.5rem;
-  color: #fff;
-  cursor: pointer;
-  font-weight: bold;
-  z-index: 1100;
-}
-@media (max-width: 600px) {
-  .modelacion-card img {
-    height: 120px;
-  }
-  .model-modal img {
-    max-width: 98vw;
-    max-height: 40vh;
-  }
-  .close-modal {
-    top: 12px;
-    right: 18px;
     font-size: 2rem;
-  }
+    margin-bottom: 8px;
+}
+
+.modelacion-desc {
+    color: #555;
+    margin-bottom: 24px;
+}
+
+.modelacion-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 24px;
+}
+
+.modelacion-card {
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.07);
+    overflow: hidden;
+    cursor: pointer;
+    transition: transform 0.15s, box-shadow 0.15s;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.modelacion-card:hover {
+    transform: translateY(-4px) scale(1.03);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+}
+
+.modelacion-card img {
+    width: 100%;
+    height: 160px;
+    object-fit: cover;
+    border-bottom: 1px solid #eee;
+}
+
+.modelacion-card h3 {
+    margin: 12px 0 6px 0;
+    font-size: 1.1rem;
+    color: #333;
+}
+
+.modelacion-card p {
+    color: #666;
+    font-size: 0.97rem;
+    margin-bottom: 12px;
+}
+
+.model-modal {
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.9);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.model-modal img {
+    max-width: 90vw;
+    max-height: 60vh;
+    border-radius: 10px;
+    margin-bottom: 18px;
+    background: #fff;
+}
+
+.model-modal #modalText {
+    color: #fff;
+    font-size: 1.1rem;
+    text-align: center;
+    max-width: 90vw;
+}
+
+.close-modal {
+    position: absolute;
+    top: 32px;
+    right: 48px;
+    font-size: 2.5rem;
+    color: #fff;
+    cursor: pointer;
+    font-weight: bold;
+    z-index: 1100;
+}
+
+@media (max-width: 600px) {
+    .modelacion-card img {
+        height: 120px;
+    }
+
+    .model-modal img {
+        max-width: 98vw;
+        max-height: 40vh;
+    }
+
+    .close-modal {
+        top: 12px;
+        right: 18px;
+        font-size: 2rem;
+    }
+}
+
+/* Contact Form Specifics */
+.contact-form-grid {
+    display: flex;
+    gap: 1rem;
+    width: 100%;
+    margin-bottom: 1rem;
+}
+
+.contact-input-wrapper {
+    flex: 1;
+    min-width: 250px;
+}
+
+.form-button.contact-submit {
+    width: auto;
+    min-width: 200px;
+    padding: 0.75rem 2rem;
+    margin: 0 auto;
+    display: block;
+    margin-top: 1rem;
+}
+
+@media (max-width: 600px) {
+    .contact-form-grid {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    .contact-input-wrapper {
+        min-width: 100%;
+    }
+
+    .form-button.contact-submit {
+        width: 100%;
+    }
 }

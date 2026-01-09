@@ -142,42 +142,9 @@
         </section>
 
         <div class="container">
-            <div class="two-column">
-                <div class="column">
-                    <div class="project-image">
-                        <iframe src="https://www.youtube.com/embed/WFWOujBKA3k?autoplay=1&mute=1" width="100%"
-                            height="100%" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-                    </div>
-                </div>
-                <div class="column">
-                    <div class="quote-form">
-                        <h2 class="quote-title">Solicita una cotización</h2>
-                        <div id="form-container">
-                            <div class="form-step" id="step1">
-                                <label for="phone" class="form-label">Ingresa tu teléfono:</label>
-                                <input type="tel" id="input1" class="form-input" placeholder="3005357985">
-                                <button class="form-button nextButton"
-                                    style="margin-top: var(--spacing-md);">Siguiente</button>
-                            </div>
-                            <div class="form-step hidden" id="step2">
-                                <label for="square-meters" class="form-label">Ingresa los metros cuadrados de tu
-                                    proyecto:</label>
-                                <input type="tel" id="input2" class="form-input" placeholder="m²">
-                                <button class="form-button nextButton"
-                                    style="margin-top: var(--spacing-md);">Siguiente</button>
-                            </div>
-                            <div class="form-step hidden" id="step3">
-                                <label for="name" class="form-label">Ingresa tu nombre:</label>
-                                <input type="text" id="input3" class="form-input" placeholder="Nombre">
-                                <button class="form-button green-button" id="submitButton"
-                                    style="margin-top: var(--spacing-md);">Enviar</button>
-                            </div>
-                        </div>
-                        <div class="result-box" id="result-box">
-                            <div id="result-message"></div>
-                        </div>
-                    </div>
-                </div>
+            <div class="project-image" style="max-width: 800px; margin: 0 auto; aspect-ratio: 16/9; height: auto;">
+                <iframe src="https://www.youtube.com/embed/WFWOujBKA3k?autoplay=1&mute=1" width="100%" height="100%"
+                    frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
             </div>
         </div>
 
@@ -186,7 +153,7 @@
     <!-- end content -->
 
     <!-- Productos section -->
-    <div class="content">
+    <div class="content" style="margin-top: 4rem;">
         <div class="container">
             <div class="section-header">
                 <h2 class="section-title">PRODUCTOS</h2>
@@ -338,52 +305,90 @@
     <!-- Inicio seccion clientes-->
     <section>
         <div class="clients-section">
-            <div class="clients-section-title">
-                <div class="titulo">
-                    CONOCE NUESTROS CLIENTES
+            <div class="clients-section">
+                <div class="section-header" style="margin-bottom: 3rem; margin-top: 3rem;">
+                    <h2 class="section-title">NUESTROS CLIENTES</h2>
+                    <div class="title-underline"></div>
+                </div>
+                <div class="clients-section-box">
+                    <div class="logos-container">
+                        <!-- Aquí puedes agregar los logos de tus clientes -->
+                        <img id="isarco" class="logo" src="static/img/logo-Isarco.png" alt="Isarco fondo blanco">
+                        <!-- <img class="logo-letras-negras inactive logo" src="static/img/compensar_letras_negras.png" alt="Compensar letras negras"> -->
+                        <img id="compensar" class="logo" src="static/img/compensar_letras_blancas.png"
+                            alt="Compensar Letras blancas">
+                        <!-- <img class="logo-letras-negras inactive logo" src="static/img/compensar_letras_negras.png" alt="Compensar letras negras"> -->
+                        <img id="ibero" class="logo" src="static/img/iberoamericana_letras_blancas.png"
+                            alt="Ibero Letras  blancas">
+                        <!-- <img class="logo-letras-negras inactive logo" src="static/img/alcaldia-de-chia-logo_letras_negras.png" alt="Chia letras negras"> -->
+                        <img id="ibero" class="logo" src="static/img/alcaldia-de-chia-logo_letras_blancas.png"
+                            alt="Chia Letras  blancas">
+                        <!-- <img class="logo-letras-negras inactive logo" src="static/img/iberoamericana_letras_negras.png" alt="Ibero letras negras"> -->
+                        <img id="consorcio" class="logo" src="static/img/c_chia.png" alt="Cliente 3">
+                        <!-- Añade más logos según sea necesario -->
+                    </div>
+                    <div class="carousel-dots">
+                        <!-- Agrega más puntos de navegación aquí según el número de imágenes -->
+                    </div>
                 </div>
             </div>
-            <div class="clients-section-box">
-                <div class="logos-container">
-                    <!-- Aquí puedes agregar los logos de tus clientes -->
-                    <img id="isarco" class="logo" src="static/img/logo-Isarco.png" alt="Isarco fondo blanco">
-                    <!-- <img class="logo-letras-negras inactive logo" src="static/img/compensar_letras_negras.png" alt="Compensar letras negras"> -->
-                    <img id="compensar" class="logo" src="static/img/compensar_letras_blancas.png"
-                        alt="Compensar Letras blancas">
-                    <!-- <img class="logo-letras-negras inactive logo" src="static/img/compensar_letras_negras.png" alt="Compensar letras negras"> -->
-                    <img id="ibero" class="logo" src="static/img/iberoamericana_letras_blancas.png"
-                        alt="Ibero Letras  blancas">
-                    <!-- <img class="logo-letras-negras inactive logo" src="static/img/alcaldia-de-chia-logo_letras_negras.png" alt="Chia letras negras"> -->
-                    <img id="ibero" class="logo" src="static/img/alcaldia-de-chia-logo_letras_blancas.png"
-                        alt="Chia Letras  blancas">
-                    <!-- <img class="logo-letras-negras inactive logo" src="static/img/iberoamericana_letras_negras.png" alt="Ibero letras negras"> -->
-                    <img id="consorcio" class="logo" src="static/img/c_chia.png" alt="Cliente 3">
-                    <!-- Añade más logos según sea necesario -->
-                </div>
-                <div class="carousel-dots">
-                    <!-- Agrega más puntos de navegación aquí según el número de imágenes -->
-                </div>
-            </div>
-        </div>
     </section>
 
 
     <!-- Final seccion clientes -->
 
+    <!-- Section Contactanos -->
+    <section id="contact-section" style="padding: 4rem 0; background-color: var(--bg-dark);">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">CONTÁCTANOS</h2>
+                <div class="title-underline"></div>
+            </div>
+
+            <div style="text-align: center; margin-bottom: 2rem; font-size: 1.2rem; color: var(--text-light);">
+                Contáctanos para brindarte un gran servicio
+            </div>
+
+            <div style="text-align: center; margin-bottom: 3rem;">
+                <a href="https://www.linkedin.com/company/dak-consultoria/" target="_blank">
+                    <img class="boton" src="static/img/linkedin.png" alt="linkedin button"
+                        style="width: 50px; height: 50px; transition: transform 0.3s ease;">
+                </a>
+            </div>
+
+            <div class="quote-form" style="max-width: 800px; margin: 0 auto; padding: 2rem;">
+                <p style="text-align: center; color: var(--text-muted); margin-bottom: 1rem;">
+                    Escríbenos a <a href="mailto:sergio@dakconsultoria.com"
+                        style="color: var(--primary-color); text-decoration: none; font-weight: bold;">sergio@dakconsultoria.com</a>
+                    o déjanos tus datos:
+                </p>
+                <div id="form-container">
+                    <div class="form-step" id="contact-step" style="margin-bottom: 0;">
+                        <div class="contact-form-grid">
+                            <div class="contact-input-wrapper">
+                                <label for="input3" class="form-label" style="margin-bottom: 0.2rem;">Nombre:</label>
+                                <input type="text" id="input3" class="form-input" placeholder="Tu nombre"
+                                    style="margin-bottom: 0; padding: 0.75rem;">
+                            </div>
+                            <div class="contact-input-wrapper">
+                                <label for="input2" class="form-label" style="margin-bottom: 0.2rem;">Correo:</label>
+                                <input type="email" id="input2" class="form-input" placeholder="tu@correo.com"
+                                    style="margin-bottom: 0; padding: 0.75rem;">
+                            </div>
+                        </div>
+                        <button class="form-button green-button contact-submit" id="submitButton">Contáctame</button>
+                    </div>
+                </div>
+                <div class="result-box" id="result-box">
+                    <div id="result-message"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Begin footer -->
     <footer>
         <div class="bottom-footer-section">
-            <div class="bottom-frame">
-                <div class="bottom-frame-text">
-                    Contáctanos para brindarte un gran servicio
-                </div>
-                <div class="bottom-frame-logo">
-                    <a href="https://www.linkedin.com/company/dak-consultoria/" target="_blank">
-                        <img class="boton" src="static/img/linkedin.png" alt="linkedin button">
-                    </a>
-                </div>
-
-            </div>
             <div class="footer-container">
                 <div class="footer-box">
                     <div class="company-logo">
