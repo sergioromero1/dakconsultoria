@@ -597,36 +597,40 @@ body {
 /* Contact Form Specifics */
 .contact-form-grid {
     display: flex;
+    flex-direction: column;
+    /* Stack vertically for both mobile and desktop */
     gap: 1rem;
     width: 100%;
+    max-width: 500px;
+    /* Ancho prudente para desktop */
+    margin: 0 auto;
+    /* Center the grid */
     margin-bottom: 1rem;
 }
 
 .contact-input-wrapper {
-    flex: 1;
-    min-width: 250px;
+    width: 100%;
+    min-width: 0;
+    /* Override previous min-width */
 }
 
 .form-button.contact-submit {
-    width: auto;
-    min-width: 200px;
+    width: 100%;
+    /* Match input width */
+    max-width: 500px;
+    /* Ensure it stays with the grid width if outside */
     padding: 0.75rem 2rem;
-    margin: 0 auto;
+    margin: 1rem auto 0;
+    /* Center and add top margin */
     display: block;
-    margin-top: 1rem;
 }
 
 @media (max-width: 600px) {
     .contact-form-grid {
-        flex-direction: column;
         gap: 0.5rem;
+        max-width: 100%;
+        /* Full width on mobile */
     }
 
-    .contact-input-wrapper {
-        min-width: 100%;
-    }
-
-    .form-button.contact-submit {
-        width: 100%;
-    }
+    /* Removed redundant rules as they are now default */
 }
