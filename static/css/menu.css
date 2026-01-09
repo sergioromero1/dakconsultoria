@@ -47,19 +47,28 @@
 
 /* Mobile Menu */
 .mobile-menu {
-  z-index: 1;
+  z-index: 1000;
   padding: 24px;
-  position: absolute;
+  position: fixed;
+  /* Fixed to keep it on screen */
   background: var(--bg-dark);
   top: 60px;
   left: 0;
-  width: calc(100% - 24px);
+  width: 100%;
+  height: calc(100vh - 60px);
+  /* Full height minus navbar */
+  overflow-y: auto;
+  /* Enable vertical scrolling */
+  box-sizing: border-box;
+  /* Ensure padding is included in width */
 }
 
 .mobile-menu a {
   color: var(--text-light);
   text-decoration: none;
   font-weight: bold;
+  display: block;
+  /* Make links block to fill width */
 }
 
 .mobile-menu ul {
