@@ -42,8 +42,10 @@ nav {
   color: var(--text-light);
   border: none;
   border-bottom: 3px solid transparent;
-  padding: 16px 20px;
-  /* 16px arriba y abajo, 20px a los lados */
+  padding: 16px 12px;
+  /* Reduced padding from 20px to 12px for better fit */
+  font-size: 0.95rem;
+  /* Slightly smaller font */
   background: none;
   transition: border-bottom 0.2s, color 0.2s;
 }
@@ -99,8 +101,20 @@ nav {
   position: relative;
 }
 
+/* Increased specificity to override .navbar-left ul */
+.navbar-left ul.dropdown-menu,
 .dropdown-menu {
   display: none;
+  position: absolute;
+  padding: 10px 0;
+  /* Reset padding to vertical only */
+  margin: 0;
+  /* Reset margin */
+  height: auto;
+  /* Reset height */
+  align-items: flex-start;
+  /* Reset align-items */
+
   position: absolute;
   top: 100%;
   left: 0;
