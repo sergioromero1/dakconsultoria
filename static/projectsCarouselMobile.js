@@ -1,6 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
     const track = document.querySelector('.custom-carousel-track');
-    // Al corregir el HTML, slides.length ahora será 4
     const slides = Array.from(document.querySelectorAll('.custom-carousel-slide'));
     const pagination = document.querySelector('.custom-carousel-pagination');
 
@@ -8,7 +7,6 @@ document.addEventListener('DOMContentLoaded', () => {
     let startX = 0;
 
     // 1. Crear indicadores (puntos) dinámicamente
-    // Ahora creará 4 puntos automáticamente
     pagination.innerHTML = ''; // Limpiamos por si acaso
     slides.forEach((_, index) => {
         const dot = document.createElement('button');
