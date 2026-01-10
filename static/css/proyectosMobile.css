@@ -19,6 +19,8 @@
     will-change: transform;
     /* max-width: 414px; */
     max-height: 232px;
+    touch-action: pan-y;
+    -webkit-user-drag: none
 }
 
 /* Estilo de cada slide/imagen */

@@ -5,9 +5,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
     let currentIndex = 0;
     let startX = 0;
+    let isDragging = false;
 
-    // 1. Crear indicadores (puntos) dinámicamente
-    pagination.innerHTML = ''; // Limpiamos por si acaso
+    // 1. Crear indicadores (puntos)
+    pagination.innerHTML = '';
     slides.forEach((_, index) => {
         const dot = document.createElement('button');
         dot.classList.add('carousel-dot-p');
@@ -18,41 +19,43 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const dots = document.querySelectorAll('.carousel-dot-p');
 
-    // 2. Función para mover el carrusel
     function goToSlide(index) {
         currentIndex = index;
-        // Usamos porcentaje basado en el índice
         const offset = -currentIndex * 100;
         track.style.transform = `translateX(${offset}%)`;
-
-        // Actualizar puntos
         dots.forEach((dot, i) => {
             dot.classList.toggle('is-active', i === currentIndex);
         });
     }
 
-    // 3. Eventos de Swipe (Touch) optimizados
+    // 2. Gestión de Touch mejorada para iOS
     track.addEventListener('touchstart', (e) => {
         startX = e.touches[0].clientX;
+        isDragging = true;
+    }, { passive: true });
+
+    track.addEventListener('touchmove', (e) => {
+        if (!isDragging) return;
+
+        // Si el movimiento es más horizontal que vertical, podemos prevenir el scroll
+        // Pero con 'touch-action: pan-y' en CSS, esto suele ser suficiente.
     }, { passive: true });
 
     track.addEventListener('touchend', (e) => {
+        if (!isDragging) return;
         const endX = e.changedTouches[0].clientX;
-        handleGesture(startX, endX);
-    }, { passive: true });
-
-    function handleGesture(x1, x2) {
+        const diff = startX - endX;
         const threshold = 50;
-        const diff = x1 - x2;
 
         if (Math.abs(diff) > threshold) {
             if (diff > 0 && currentIndex < slides.length - 1) {
-                // Swipe Izquierda -> Siguiente
+                // Siguiente
                 goToSlide(currentIndex + 1);
             } else if (diff < 0 && currentIndex > 0) {
-                // Swipe Derecha -> Anterior
+                // Anterior
                 goToSlide(currentIndex - 1);
             }
         }
-    }
+        isDragging = false;
+    });
 });
