@@ -1,103 +1,59 @@
-document.addEventListener('DOMContentLoaded', function () {
-  const slideContainer = document.querySelector('.projects-carousel-mobile');
-  const slides = document.querySelectorAll('.projects-carousel-mobile img');
-  const dotsContainer = document.querySelector('.projects-carousel-dots-mobile');
+document.addEventListener('DOMContentLoaded', () => {
+    const track = document.querySelector('.custom-carousel-track');
+    const slides = Array.from(document.querySelectorAll('.custom-carousel-slide'));
+    const pagination = document.querySelector('.custom-carousel-pagination');
 
-  let slideIndex = 0;
-  let startX = 0;
-  let isDragging = false;
+    let currentIndex = 0;
+    let startX = 0;
+    let currentTranslate = 0;
 
-  // Create dots
-  function createDots() {
-    dotsContainer.innerHTML = '';
+    // 1. Crear indicadores (puntos) dinámicamente
     slides.forEach((_, index) => {
-      const dot = document.createElement('span');
-      dot.classList.add('projects-carousel-dot');
-      dotsContainer.appendChild(dot);
-      dot.addEventListener('click', () => {
-        goToSlide(index);
-      });
+        const dot = document.createElement('button');
+        dot.classList.add('carousel-dot-p');
+        if (index === 0) dot.classList.add('is-active');
+        dot.addEventListener('click', () => goToSlide(index));
+        pagination.appendChild(dot);
     });
-  }
 
-  createDots();
+    const dots = document.querySelectorAll('.carousel-dot-p');
 
-  // Mostrar el primer slide al cargar la página
-  showSlide(slideIndex);
+    // 2. Función para mover el carrusel
+    function goToSlide(index) {
+        currentIndex = index;
+        const offset = -currentIndex * 100;
+        track.style.transform = `translateX(${offset}%)`;
 
-  function showSlide(index) {
-
-    const isMobile = window.innerWidth <= 808;
-
-    if (isMobile) {
-
-      const targetSlide = slides[index];
-
-      if (targetSlide) {
-        const itemWidth = targetSlide.offsetWidth;
-        const parentWidth = slideContainer.parentElement.clientWidth;
-        const itemLeft = targetSlide.offsetLeft;
-
-        let moveX = itemLeft - (parentWidth - itemWidth) / 2;
-        slideContainer.style.transform = `translateX(-${moveX}px)`;
-
-      }
-    } else {
-      // Desktop behavior
-      slideContainer.style.transform = `translateX(-${index * (80 / slides.length)}%)`;
+        // Actualizar puntos
+        dots.forEach((dot, i) => {
+            dot.classList.toggle('is-active', i === currentIndex);
+        });
     }
 
-    // Update Dots
-    const dots = dotsContainer.querySelectorAll('.projects-carousel-dot');
-    dots.forEach((dot, i) => dot.classList.toggle('active', i === index));
-  }
+    // 3. Eventos de Swipe (Touch)
+    track.addEventListener('touchstart', (e) => {
+        startX = e.touches[0].clientX;
+    });
 
-  function goToSlide(index) {
-    showSlide(index);
-    slideIndex = index;
-  }
+    track.addEventListener('touchend', (e) => {
+        const endX = e.changedTouches[0].clientX;
+        handleGesture(startX, endX);
+    });
 
-  function nextSlide() {
-    if (slideIndex === slides.length - 1) {
-      slideIndex = 0;
-    } else {
-      slideIndex++;
+    function handleGesture(x1, x2) {
+        const threshold = 50; // Mínimo de píxeles para deslizar
+        const diff = x1 - x2;
+
+        if (diff > threshold) {
+            // Swipe hacia la izquierda -> Siguiente
+            if (currentIndex < slides.length - 1) {
+                goToSlide(currentIndex + 1);
+            }
+        } else if (diff < -threshold) {
+            // Swipe hacia la derecha -> Anterior
+            if (currentIndex > 0) {
+                goToSlide(currentIndex - 1);
+            }
+        }
     }
-    showSlide(slideIndex);
-  }
-
-  function prevSlide() {
-    if (slideIndex === 0) {
-      slideIndex = slides.length - 1;
-    } else {
-      slideIndex--;
-    }
-    showSlide(slideIndex);
-  }
-
-  // desplazamiento tactil
-  slideContainer.addEventListener('touchstart', (e) => {
-    startX = e.touches[0].clientX;
-    isDragging = true;
-  });
-
-  slideContainer.addEventListener('touchmove', (e) => {
-    if (isDragging) {
-      const currentX = e.touches[0].clientX;
-      const diffX = startX - currentX;
-
-      if (diffX > 100) {
-        nextSlide();
-        isDragging = false;
-      } else if (diffX < -100) {
-        prevSlide();
-        isDragging = false;
-      }
-    }
-  });
-
-  slideContainer.addEventListener('touchend', () => {
-    isDragging = false;
-  });
-
 });

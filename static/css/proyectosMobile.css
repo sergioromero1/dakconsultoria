@@ -1,0 +1,59 @@
+/* Contenedor que limita la vista a una sola imagen */
+.custom-carousel-container {
+    width: 100%;
+    max-width: 500px;
+    /* Puedes ajustar este ancho */
+    margin: 0 auto;
+    overflow: hidden;
+    /* Oculta lo que no está en pantalla */
+    position: relative;
+    padding-bottom: 30px;
+    /* Espacio para los puntos fuera de la imagen */
+}
+
+/* Tira larga que contiene todas las imágenes alineadas */
+.custom-carousel-track {
+    display: flex;
+    transition: transform 0.4s ease-in-out;
+    width: 100%;
+    will-change: transform;
+    max-width: 414px;
+    max-height: 232px;
+}
+
+/* Estilo de cada slide/imagen */
+.custom-carousel-slide {
+    min-width: 100%;
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    display: block;
+    border-radius: 5%;
+}
+
+/* Contenedor de puntos fuera de la ventana de imagen */
+.custom-carousel-pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    margin-top: 15px;
+}
+
+/* Estilo de los puntos (indicadores) */
+.carousel-dot-p {
+    width: 10px;
+    height: 10px;
+    background-color: #d1d1d1;
+    border-radius: 50%;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.carousel-dot-p.is-active {
+    background-color: #007bff;
+    /* Color del punto activo */
+    transform: scale(1.3);
+}
