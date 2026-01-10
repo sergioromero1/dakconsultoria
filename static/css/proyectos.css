@@ -45,4 +45,8 @@
         cursor: pointer;
         font-size: 24px;
     }
+
+    .custom-carousel-container {
+        display: none;
+    }
 }
