@@ -87,22 +87,21 @@
         /* Performance optimization */
     }
 
-    .projects-carousel-mobile img {
-        flex: 0 0 100%;
-        /* Robust flex sizing */
-        width: 100%;
-        max-width: none;
-        height: auto;
+    .projects-carousel-mobile .project-slide {
+        flex: 0 0 100% !important;
+        /* Override styles.css min-width */
+        width: 100% !important;
+        min-width: 100% !important;
+        max-width: none !important;
+        height: auto !important;
+        /* Override styles.css height: 200px */
         aspect-ratio: 16/9;
         object-fit: cover;
         border-radius: 20px;
         margin: 0;
-        /* Remove margin to simplify calc, rely on padding if needed, or keeping it 0 tight */
         box-sizing: border-box;
         background-color: #2a2a2a;
-        /* Fallback for transparent PNGs - card style */
         border: 1px solid #444;
-        /* Subtle border */
     }
 
     .projects-carousel-dots-mobile {
