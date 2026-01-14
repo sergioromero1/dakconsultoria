@@ -1,16 +1,16 @@
-document.addEventListener('DOMContentLoaded', function() {
-    
+document.addEventListener('DOMContentLoaded', function () {
+
     // Track page load time for anti-spam speed check
     const pageLoadTime = Date.now();
     const MIN_INTERACTION_TIME = 3000; // 3 seconds
     const SUBMISSION_COOLDOWN = 5 * 60 * 1000; // 5 minutes in milliseconds
 
     // We only have one submit button now
-    document.getElementById('submitButton').addEventListener('click', function() {
+    document.getElementById('submitButton').addEventListener('click', function () {
         let nameValue = document.getElementById('input3').value;
         let emailValue = document.getElementById('input2').value;
         let honeypotValue = document.getElementById('website_hp').value;
-        
+
         const resultMessage = document.getElementById('result-message');
         const currentTime = Date.now();
 
@@ -58,10 +58,10 @@ document.addEventListener('DOMContentLoaded', function() {
             message = 'El correo no puede estar vacío.';
             isValid = false;
         } else if (!emailPattern.test(emailValue)) {
-             message = 'Ingresa un correo válido';
-             isValid = false;
+            message = 'Ingresa un correo válido';
+            isValid = false;
         }
-        
+
         if (!isValid) {
             resultMessage.innerText = message;
             resultMessage.style.color = getComputedStyle(document.documentElement).getPropertyValue('--error-light');
@@ -76,8 +76,11 @@ document.addEventListener('DOMContentLoaded', function() {
             // Send to Telegram (Phone/Input1 is now unused/empty)
             my_other_funct_throttled("", emailValue, nameValue);
 
+            // Send to Supabase
+            saveToSupabase(nameValue, emailValue);
+
             resultMessage.innerHTML = `<p class="success-message">¡Gracias ${nameValue}! Te contactaremos pronto.</p>`;
-            
+
             // Clear inputs
             document.getElementById('input3').value = '';
             document.getElementById('input2').value = '';
@@ -85,8 +88,39 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
+const SUPABASE_URL = 'https://vdvjilvxzufypygyczjt.supabase.co';
+const SUPABASE_ANON_KEY = 'sb_publishable_I3PTdAiB_xyj6N83uUtb-g_9jqb0hnJ';
 
-function my_funct(component){
+function saveToSupabase(name, email) {
+    const url = `${SUPABASE_URL}/rest/v1/Contactos`;
+    const headers = {
+        'apikey': SUPABASE_ANON_KEY,
+        'Authorization': `Bearer ${SUPABASE_ANON_KEY}`,
+        'Content-Type': 'application/json',
+        'Prefer': 'return=minimal'
+    };
+    const body = JSON.stringify({
+        nombre: name,
+        email: email
+    });
+
+    fetch(url, {
+        method: 'POST',
+        headers: headers,
+        body: body
+    }).then(response => {
+        if (!response.ok) {
+            console.warn('Supabase Error:', response.statusText);
+        } else {
+            console.log('Saved to Supabase');
+        }
+    }).catch(error => {
+        console.error('Supabase Network Error:', error);
+    });
+}
+
+
+function my_funct(component) {
     const p1 = "72795";
     const p2 = "19499:";
     const p3 = "AAHkVt";
@@ -94,15 +128,15 @@ function my_funct(component){
     const p5 = "jmaJTd_";
     const p6 = "MZD4g6";
     const p7 = "JRImjq";
-    const p8 = "U"+ component;
+    const p8 = "U" + component;
 
 
-    return p1+p2+p3+p4+p5+p6+p7+p8
+    return p1 + p2 + p3 + p4 + p5 + p6 + p7 + p8
 }
 
-function my_function2(component){
+function my_function2(component) {
 
-    my_var = my_funct('V'+ component)
+    my_var = my_funct('V' + component)
     const part1 = "https://api.telegram.org/bot"
     const part2 = `${my_var}`
     const part3 = "/sendMessage"
@@ -130,7 +164,7 @@ function my_other_funct_throttled(...args) {
     }
 }
 
-function my_other_funct(phone, email, name){
+function my_other_funct(phone, email, name) {
 
     const id = '333685986'
     const home = my_function2('0')
