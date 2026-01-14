@@ -415,6 +415,12 @@
                 <div id="form-container">
                     <div class="form-step" id="contact-step" style="margin-bottom: 0;">
                         <div class="contact-form-grid">
+                            <!-- Honeypot field (hidden from users, visible to bots) -->
+                            <div
+                                style="opacity: 0; position: absolute; top: 0; left: 0; height: 0; width: 0; z-index: -1;">
+                                <label for="website_hp">Website</label>
+                                <input type="text" id="website_hp" name="website_hp" autocomplete="off" tabindex="-1">
+                            </div>
                             <div class="contact-input-wrapper">
                                 <label for="input3" class="form-label" style="margin-bottom: 0.2rem;">Nombre:</label>
                                 <input type="text" id="input3" class="form-input" placeholder="Tu nombre"

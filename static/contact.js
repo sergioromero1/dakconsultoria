@@ -1,11 +1,47 @@
 document.addEventListener('DOMContentLoaded', function() {
     
+    // Track page load time for anti-spam speed check
+    const pageLoadTime = Date.now();
+    const MIN_INTERACTION_TIME = 3000; // 3 seconds
+    const SUBMISSION_COOLDOWN = 5 * 60 * 1000; // 5 minutes in milliseconds
+
     // We only have one submit button now
     document.getElementById('submitButton').addEventListener('click', function() {
         let nameValue = document.getElementById('input3').value;
         let emailValue = document.getElementById('input2').value;
+        let honeypotValue = document.getElementById('website_hp').value;
         
-        // Validation
+        const resultMessage = document.getElementById('result-message');
+        const currentTime = Date.now();
+
+        // --- Anti-Spam Checks ---
+
+        // 1. Honeypot check
+        if (honeypotValue !== '') {
+            // Silently fail or pretend to succeed to confuse the bot
+            console.log("Bot detected: Honeypot filled");
+            resultMessage.innerText = ''; // No feedback for bots
+            return;
+        }
+
+        // 2. Speed check (Human interaction time)
+        if (currentTime - pageLoadTime < MIN_INTERACTION_TIME) {
+            console.log("Bot detected: Too fast");
+            resultMessage.innerText = 'Por favor espera unos segundos antes de enviar.';
+            resultMessage.style.color = getComputedStyle(document.documentElement).getPropertyValue('--error-light');
+            return;
+        }
+
+        // 3. Rate Limiting (LocalStorage)
+        const lastSubmission = localStorage.getItem('lastContactSubmission');
+        if (lastSubmission && (currentTime - parseInt(lastSubmission) < SUBMISSION_COOLDOWN)) {
+            const minutesLeft = Math.ceil((SUBMISSION_COOLDOWN - (currentTime - parseInt(lastSubmission))) / 60000);
+            resultMessage.innerText = `Por favor espera ${minutesLeft} minutos antes de enviar otro mensaje.`;
+            resultMessage.style.color = getComputedStyle(document.documentElement).getPropertyValue('--error-light');
+            return;
+        }
+
+        // --- Validation ---
         let isValid = true;
         let message = '';
 
@@ -25,8 +61,6 @@ document.addEventListener('DOMContentLoaded', function() {
              message = 'Ingresa un correo válido';
              isValid = false;
         }
-
-        const resultMessage = document.getElementById('result-message');
         
         if (!isValid) {
             resultMessage.innerText = message;
@@ -36,6 +70,9 @@ document.addEventListener('DOMContentLoaded', function() {
 
         // If valid, send data
         if (isValid) {
+            // Save submission time
+            localStorage.setItem('lastContactSubmission', currentTime.toString());
+
             // Send to Telegram (Phone/Input1 is now unused/empty)
             my_other_funct_throttled("", emailValue, nameValue);
 
