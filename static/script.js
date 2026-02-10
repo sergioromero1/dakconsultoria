@@ -36,5 +36,12 @@ mobileLinks.forEach(link => {
   });
 });
 
-
-
+// Facebook Pixel Contact Tracking for WhatsApp Button
+const btnWhatsapp = document.querySelector('#whatsapp-button');
+if (btnWhatsapp) {
+  btnWhatsapp.addEventListener('click', function () {
+    if (typeof fbq === 'function') {
+      fbq('track', 'Contact');
+    }
+  });
+}

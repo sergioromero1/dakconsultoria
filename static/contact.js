@@ -79,6 +79,11 @@ document.addEventListener('DOMContentLoaded', function () {
             // Send to Supabase
             saveToSupabase(nameValue, emailValue);
 
+            // Facebook Pixel Lead Tracking
+            if (typeof fbq === 'function') {
+                fbq('track', 'Lead');
+            }
+
             resultMessage.innerHTML = `<p class="success-message">¡Gracias ${nameValue}! Te contactaremos pronto.</p>`;
 
             // Clear inputs
