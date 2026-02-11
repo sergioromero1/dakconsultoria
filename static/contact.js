@@ -84,6 +84,11 @@ document.addEventListener('DOMContentLoaded', function () {
                 fbq('track', 'Lead');
             }
 
+            // Google Ads Conversion
+            if (typeof gtag_report_conversion === 'function') {
+                gtag_report_conversion();
+            }
+
             resultMessage.innerHTML = `<p class="success-message">¡Gracias ${nameValue}! Te contactaremos pronto.</p>`;
 
             // Clear inputs

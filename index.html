@@ -38,7 +38,24 @@
     function gtag() { dataLayer.push(arguments); }
     gtag('js', new Date());
 
+
     gtag('config', 'G-NHBHX0G6KV');
+</script>
+
+<!-- Google Ads Conversion Tracking -->
+<script>
+    function gtag_report_conversion(url) {
+        var callback = function () {
+            if (typeof (url) != 'undefined') {
+                window.location = url;
+            }
+        };
+        gtag('event', 'conversion', {
+            'send_to': 'AW-17859282625/wHcOCMb5xPEbEMGN_MNC',
+            'event_callback': callback
+        });
+        return false;
+    }
 </script>
 
 <!-- Meta Pixel Code -->
