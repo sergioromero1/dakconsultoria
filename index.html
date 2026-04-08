@@ -41,7 +41,7 @@
         gtag('config', 'G-NHBHX0G6KV');
     </script>
 
-    <!-- Google Ads Conversion Tracking -->
+    <!-- Google Ads Conversion Tracking Form -->
     <script>
         function gtag_report_conversion(url) {
             var callback = function () {
@@ -51,6 +51,22 @@
             };
             gtag('event', 'conversion', {
                 'send_to': 'AW-17859282625/wHcOCMb5xPEbEMGN_MNC',
+                'event_callback': callback
+            });
+            return false;
+        }
+    </script>
+
+    <!-- Google Ads Conversion Tracking Whatsapp -->
+    <script>
+        function gtag_report_whatsapp_click(url) {
+            var callback = function () {
+                if (typeof (url) != 'undefined' && url != null) {
+                    window.location = url;
+                }
+            };
+            gtag('event', 'conversion', {
+                'send_to': 'AW-17859282625/SdMDCLjHv5gcEMGN_MNC',
                 'event_callback': callback
             });
             return false;
@@ -269,8 +285,9 @@
     <!-- Inicio Boton whatsapp -->
     <div class="container-boton">
         <a id="whatsapp-button" href="https://wa.me/573005357985?text=Quiero%20realizar%20un%20proyecto"
+            onclick="return gtag_report_whatsapp_click('https://wa.me/573005357985?text=Quiero%20realizar%20un%20proyecto');"
             target="_blank">
-            <img class="wsboton" src="static/img/whatsapp.png" alt="">
+            <img class="wsboton" src="static/img/whatsapp.png" alt="Contactar a Dak Consultoría">
         </a>
     </div>
 
