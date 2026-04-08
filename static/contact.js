@@ -86,7 +86,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
             // Google Ads Conversion
             if (typeof gtag_report_conversion === 'function') {
-                gtag_report_conversion();
+                gtag_report_conversion(null);
             }
 
             resultMessage.innerHTML = `<p class="success-message">¡Gracias ${nameValue}! Te contactaremos pronto.</p>`;
