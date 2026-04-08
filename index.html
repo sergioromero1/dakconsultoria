@@ -28,60 +28,63 @@
     <link rel="stylesheet" href="static/css/whatsapp-button.css">
     <link rel="stylesheet" href="static/css/proyectosMobile.css">
 
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-NHBHX0G6KV"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        // Configuración de Google Ads 
+        gtag('config', 'AW-17859282625');
+        // Configuración de Google Analytics
+        gtag('config', 'G-NHBHX0G6KV');
+    </script>
+
+    <!-- Google Ads Conversion Tracking -->
+    <script>
+        function gtag_report_conversion(url) {
+            var callback = function () {
+                if (typeof (url) != 'undefined' && url != null) {
+                    window.location = url;
+                }
+            };
+            gtag('event', 'conversion', {
+                'send_to': 'AW-17859282625/wHcOCMb5xPEbEMGN_MNC',
+                'event_callback': callback
+            });
+            return false;
+        }
+    </script>
+
+    <!-- Meta Pixel Code -->
+    <script>
+        !function (f, b, e, v, n, t, s) {
+            if (f.fbq) return; n = f.fbq = function () {
+                n.callMethod ?
+                    n.callMethod.apply(n, arguments) : n.queue.push(arguments)
+            };
+            if (!f._fbq) f._fbq = n; n.push = n; n.loaded = !0; n.version = '2.0';
+            n.queue = []; t = b.createElement(e); t.async = !0;
+            t.src = v; s = b.getElementsByTagName(e)[0];
+            s.parentNode.insertBefore(t, s)
+        }(window, document, 'script',
+            'https://connect.facebook.net/en_US/fbevents.js');
+        fbq('init', '1336627355169343');
+        fbq('track', 'PageView');
+    </script>
+    <noscript><img height="1" width="1" style="display:none"
+            src="https://www.facebook.com/tr?id=1336627355169343&ev=PageView&noscript=1" />
+    </noscript>
+    <!-- End Meta Pixel Code -->
+
+    <!-- Meta verification Code -->
+    <meta name="facebook-domain-verification" content="fvrtxounj7itare92bycs15v1qiu6l" />
+    <!-- End Meta verification Code -->
 
 </head>
 
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-NHBHX0G6KV"></script>
-<script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag() { dataLayer.push(arguments); }
-    gtag('js', new Date());
 
-
-    gtag('config', 'G-NHBHX0G6KV');
-</script>
-
-<!-- Google Ads Conversion Tracking -->
-<script>
-    function gtag_report_conversion(url) {
-        var callback = function () {
-            if (typeof (url) != 'undefined' && url != null) {
-                window.location = url;
-            }
-        };
-        gtag('event', 'conversion', {
-            'send_to': 'AW-17859282625/wHcOCMb5xPEbEMGN_MNC',
-            'event_callback': callback
-        });
-        return false;
-    }
-</script>
-
-<!-- Meta Pixel Code -->
-<script>
-    !function (f, b, e, v, n, t, s) {
-        if (f.fbq) return; n = f.fbq = function () {
-            n.callMethod ?
-                n.callMethod.apply(n, arguments) : n.queue.push(arguments)
-        };
-        if (!f._fbq) f._fbq = n; n.push = n; n.loaded = !0; n.version = '2.0';
-        n.queue = []; t = b.createElement(e); t.async = !0;
-        t.src = v; s = b.getElementsByTagName(e)[0];
-        s.parentNode.insertBefore(t, s)
-    }(window, document, 'script',
-        'https://connect.facebook.net/en_US/fbevents.js');
-    fbq('init', '1336627355169343');
-    fbq('track', 'PageView');
-</script>
-<noscript><img height="1" width="1" style="display:none"
-        src="https://www.facebook.com/tr?id=1336627355169343&ev=PageView&noscript=1" />
-</noscript>
-<!-- End Meta Pixel Code -->
-
-<!-- Meta verification Code -->
-<meta name="facebook-domain-verification" content="fvrtxounj7itare92bycs15v1qiu6l" />
-<!-- End Meta verification Code -->
 
 <body>
 
