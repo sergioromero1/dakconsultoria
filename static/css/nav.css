@@ -3,18 +3,18 @@ nav {
   display: flex;
   justify-content: space-between;
   padding: 0 24px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
   position: sticky;
   top: 0;
-  background-color: var(--bg-dark);
-  /* Ensure background is solid */
+  background-color: rgba(9, 9, 11, 0.8);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
   color: var(--text-light);
   z-index: 999;
   box-sizing: content-box;
   align-items: center;
-  /* Vertically center everything */
   height: 60px;
-  /* Explicit height */
+  transition: all 0.3s ease;
 }
 
 /* Navbar Left Section (Logo + Links) */
@@ -69,15 +69,14 @@ nav {
 .navbar-left ul li a,
 .navbar-right ul li a {
   text-decoration: none;
-  color: var(--text-light);
+  color: var(--text-muted);
   border: none;
-  border-bottom: 3px solid transparent;
+  border-bottom: 2px solid transparent; /* Changed from 3px */
   padding: 16px 12px;
-  /* Reduced padding from 20px to 12px for better fit */
   font-size: 0.95rem;
-  /* Slightly smaller font */
+  font-weight: 500;
   background: none;
-  transition: border-bottom 0.2s, color 0.2s;
+  transition: all 0.3s ease;
 }
 
 .navbar-left a {
@@ -90,8 +89,7 @@ nav {
 }
 
 .navbar-left ul li a:hover {
-  border-bottom: 3px solid var(--text-light);
-  /* Línea visible al hacer hover */
+  border-bottom: 2px solid var(--accent-color);
   color: var(--text-light);
 }
 
@@ -136,25 +134,20 @@ nav {
 .dropdown-menu {
   display: none;
   position: absolute;
-  padding: 10px 0;
-  /* Reset padding to vertical only */
-  margin: 0;
-  /* Reset margin */
-  height: auto;
-  /* Reset height */
-  align-items: flex-start;
-  /* Reset align-items */
-
-  position: absolute;
   top: 100%;
   left: 0;
-  background-color: var(--bg-dark);
+  background-color: rgba(24, 24, 27, 0.95);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
   min-width: 200px;
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  box-shadow: var(--shadow-lg);
+  border: 1px solid var(--border-color);
+  border-radius: 0 0 var(--border-radius) var(--border-radius);
   flex-direction: column;
   height: auto !important;
-  /* Override default height */
   padding: 10px 0;
+  margin: 0;
+  align-items: flex-start;
   z-index: 1000;
 }
 

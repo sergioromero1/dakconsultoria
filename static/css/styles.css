@@ -1,34 +1,54 @@
 :root {
+    /* Main Dark Theme background */
+    --bg-dark: #09090b; 
+    --bg-card: rgba(24, 24, 27, 0.75); /* Glassmorphism base */
+    --bg-input: rgba(39, 39, 42, 0.7);
+    --border-color: rgba(255, 255, 255, 0.08);
+    --border-hover: rgba(59, 130, 246, 0.4);
+    
+    /* Blues / Cyans / Premium Accents */
     --primary-color: #3b82f6;
-    --primary-dark: #1d4ed8;
+    --primary-dark: #2563eb;
     --primary-light: #60a5fa;
-    --text-light: #f1f5f9;
+    --accent-color: #06b6d4;  /* Cyan */
+    
+    /* Text */
+    --text-light: #f8fafc;
     --text-muted: #94a3b8;
-    --bg-dark: #0f172a;
-    --bg-card: #1e293b;
-    --bg-input: #334155;
-    --border-color: #475569;
-    --accent-color: #38bdf8;
+    --text-input-field: #f1f5f9;
+        
+    /* Success / Errors */
     --success-color: #10b981;
     --success-dark: #059669;
     --success-light: #34d399;
+    --error: #ef4444;
+    --error-light: #f87171;
+    
+    /* Legacy / Utilities mapped to new values */
+    --white: #FFFFFF;
+    --black: #000000;
+    --dark: #18181b;
+    --very-light-pink: #e2e8f0;
+    --hospital-green: #34d399;
+    --hospital-gray: rgba(52, 211, 153, 0.2);
+    --success-green: #10b981;
+    
+    /* Spacings */
     --spacing-sm: 0.5rem;
     --spacing-md: 1rem;
     --spacing-lg: 2rem;
     --spacing-xl: 4rem;
-    --border-radius: 0.5rem;
-    --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.2), 0 2px 4px -1px rgba(0, 0, 0, 0.1);
-    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.3), 0 4px 6px -2px rgba(0, 0, 0, 0.1);
-    --white: #FFFFFF;
-    --black: #000000;
-    --dark: #232830;
-    --very-light-pink: #C7C7C7;
-    --text-input-field: #F7F7F7;
-    --hospital-green: #ACD9B2;
-    --success-green: #28a745;
-    --hospital-gray: #acd9b285;
-    --error: #F33535;
-    --error-light: #F67171;
+    
+    /* Borders & Shadows */
+    --border-radius: 14px;
+    --shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.4);
+    --shadow-lg: 0 16px 40px 0 rgba(0, 0, 0, 0.6);
+    
+    /* Fonts */
+    --font-heading: 'Outfit', sans-serif;
+    --font-body: 'Inter', sans-serif;
+
+    /* Sizes */
     --sm: 14px;
     --md: 16px;
     --lg: 18px;
@@ -43,13 +63,25 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: var(--font-body);
 }
 
 body {
     background-color: var(--bg-dark);
     color: var(--text-light);
     line-height: 1.6;
+    font-family: var(--font-body);
+    -webkit-font-smoothing: antialiased;
+    /* Subtle background radial gradient for entire page */
+    background: radial-gradient(circle at 10% 50%, rgba(59, 130, 246, 0.08), transparent 30%),
+                radial-gradient(circle at 90% 20%, rgba(6, 182, 212, 0.08), transparent 30%),
+                var(--bg-dark);
+    background-attachment: fixed;
+}
+
+h1, h2, h3, h4, h5, h6, .hero-title, .section-title {
+    font-family: var(--font-heading);
+    letter-spacing: -0.01em;
 }
 
 .container {
@@ -91,7 +123,7 @@ html {
     left: 0;
     right: 0;
     bottom: 0;
-    background: linear-gradient(rgba(15, 23, 42, 0.7), rgba(15, 23, 42, 0.95));
+    background: linear-gradient(135deg, rgba(9, 9, 11, 0.95) 0%, rgba(15, 23, 42, 0.8) 100%);
     z-index: 1;
 }
 
@@ -104,11 +136,14 @@ html {
 }
 
 .hero-title {
-    font-size: 2.5rem;
-    font-weight: 700;
+    font-size: 3rem;
+    font-weight: 800;
     margin-bottom: var(--spacing-md);
     color: var(--text-light);
     text-transform: uppercase;
+    background: linear-gradient(to right, #fff, #60a5fa);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
 .hero-text {
@@ -135,6 +170,8 @@ html {
     position: relative;
     background-color: var(--bg-card);
     border: 1px solid var(--border-color);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
 }
 
 .project-image img {
@@ -142,6 +179,11 @@ html {
     height: 100%;
     object-fit: cover;
     display: block;
+    transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.project-image:hover img {
+    transform: scale(1.02);
 }
 
 .project-image iframe {
@@ -153,13 +195,13 @@ html {
 
 .quote-form {
     background-color: var(--bg-card);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
     border-radius: var(--border-radius);
-    padding: var(--spacing-md);
-    /* Reduced from lg */
+    padding: var(--spacing-lg);
     box-shadow: var(--shadow);
     border: 1px solid var(--border-color);
     min-height: auto;
-    /* Remove fixed height */
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -247,18 +289,20 @@ html {
 /* Service Cards */
 .service-card {
     background-color: var(--bg-card);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
     border-radius: var(--border-radius);
     overflow: hidden;
     box-shadow: var(--shadow);
-    transition: all 0.3s ease;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     height: 100%;
     border: 1px solid var(--border-color);
 }
 
 .service-card:hover {
-    transform: translateY(-5px);
-    box-shadow: var(--shadow-lg);
-    border-color: var(--accent-color);
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-lg), 0 0 24px rgba(59, 130, 246, 0.2);
+    border-color: var(--border-hover);
 }
 
 .service-image {
