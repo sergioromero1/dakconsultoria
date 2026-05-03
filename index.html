@@ -443,7 +443,7 @@
                     <a href="mailto:sergio@dakconsultoria.com" class="info-card info-card--highlighted" id="email-cta">
                         <i class="fas fa-envelope"></i>
                         <div>
-                            <h4>Escríbanos un Correo</h4>
+                            <h4>Escríbenos un Correo</h4>
                             <p class="email-address">sergio@dakconsultoria.com</p>
                             <span class="email-cta-text">Haga clic para enviar un correo →</span>
                         </div>
@@ -474,7 +474,7 @@
 
             <div class="form-card reveal">
                 <h3>Solicitar Asesoría</h3>
-                <form action="#" method="POST" id="contact-form" onsubmit="handleFormSubmit(event)">
+                <form action="#" method="POST" id="contact-form">
                     <div class="form-row">
                         <div class="form-group">
                             <input type="text" id="name" name="name" required placeholder=" ">
@@ -491,7 +491,8 @@
                             <label for="email">Correo Electrónico</label>
                         </div>
                         <div class="form-group">
-                            <input type="tel" id="phone" name="phone" placeholder=" " pattern="[\+0-9\s\-\(\)]*" oninput="this.value = this.value.replace(/[^0-9+\s\-()]/g, '')">
+                            <input type="tel" id="phone" name="phone" placeholder=" " pattern="[\+0-9\s\-\(\)]*"
+                                oninput="this.value = this.value.replace(/[^0-9+\s\-()]/g, '')">
                             <label for="phone">Teléfono</label>
                         </div>
                     </div>
@@ -576,7 +577,7 @@
     <a href="https://wa.me/573005357985?text=Hola,%20Quiero%20realizar%20un%20proyecto"
         onclick="return gtag_report_whatsapp_click('https://wa.me/573005357985?text=Quiero%20realizar%20un%20proyecto');"
         target="_blank" class="whatsapp-float" aria-label="Contactar por WhatsApp" id="whatsapp-float">
-        <div class="whatsapp-tooltip">💬 ¿Necesita asesoría? ¡Escríbanos!</div>
+        <div class="whatsapp-tooltip">💬 ¿Necesitas asesoría? ¡Escríbenos!</div>
         <div class="whatsapp-btn">
             <i class="fab fa-whatsapp"></i>
         </div>
@@ -633,24 +634,7 @@
             });
         });
 
-        // ---- Form Submit Handler ----
-        function handleFormSubmit(event) {
-            event.preventDefault();
-            gtag_report_conversion();
-            const btn = document.getElementById('btn-submit');
-            const original = btn.innerHTML;
-
-            btn.innerHTML = '<i class="fas fa-check"></i> <span>¡Mensaje Enviado!</span>';
-            btn.style.background = '#25D366';
-            btn.disabled = true;
-
-            setTimeout(() => {
-                btn.innerHTML = original;
-                btn.style.background = '';
-                btn.disabled = false;
-                document.getElementById('contact-form').reset();
-            }, 3000);
-        }
+        // ---- Form Submit Handler is now in the Firebase module script below ----
 
         // ---- Scroll Reveal Animation ----
         const revealElements = document.querySelectorAll('.reveal');
@@ -734,6 +718,79 @@
                 setTimeout(() => tooltip.style.display = 'none', 500);
             }
         }, 6000);
+    </script>
+
+    <!-- Firebase Firestore Integration (Modular SDK v10+) -->
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+        import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
+
+        // Firebase configuration
+        const firebaseConfig = {
+            apiKey: 'AIzaSyDNHc0wKGDYhdz_BM584do9zPAX2elvL08',
+            authDomain: 'dak-frontent.firebaseapp.com',
+            projectId: 'dak-frontent',
+            storageBucket: 'dak-frontent.firebasestorage.app',
+            messagingSenderId: '227171523407',
+            appId: '1:227171523407:web:7012c1733835a2227f833a',
+            measurementId: 'G-7NJ61L2CGW'
+        };
+
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);
+
+        // Form submit handler
+        const form = document.getElementById('contact-form');
+        form.addEventListener('submit', async (event) => {
+            event.preventDefault();
+
+            const btn = document.getElementById('btn-submit');
+            const original = btn.innerHTML;
+
+            // Collect form data
+            const data = {
+                nombre: document.getElementById('name').value,
+                empresa: document.getElementById('company').value,
+                email: document.getElementById('email').value,
+                telefono: document.getElementById('phone').value,
+                servicio: document.getElementById('service').value,
+                mensaje: document.getElementById('message').value,
+                fecha: new Date().toISOString()
+            };
+
+            try {
+                // Save to Firestore 'contactos' collection
+                await addDoc(collection(db, 'contactos'), data);
+
+                // Google Ads conversion tracking
+                if (typeof gtag_report_conversion === 'function') {
+                    gtag_report_conversion();
+                }
+
+                btn.innerHTML = '<i class="fas fa-check"></i> <span>¡Mensaje Enviado!</span>';
+                btn.style.background = '#25D366';
+                btn.disabled = true;
+
+                setTimeout(() => {
+                    btn.innerHTML = original;
+                    btn.style.background = '';
+                    btn.disabled = false;
+                    form.reset();
+                }, 3000);
+            } catch (error) {
+                console.error('Error al enviar formulario a Firestore:', error);
+                btn.innerHTML = '<i class="fas fa-times"></i> <span>Error al enviar</span>';
+                btn.style.background = '#e74c3c';
+                btn.disabled = true;
+
+                setTimeout(() => {
+                    btn.innerHTML = original;
+                    btn.style.background = '';
+                    btn.disabled = false;
+                }, 3000);
+            }
+        });
     </script>
 </body>
 
